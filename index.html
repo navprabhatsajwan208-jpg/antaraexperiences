@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antara Experiences — Yoga & Himalayan Trek Immersion, Rishikesh</title>
-<meta name="description" content="A guided immersion from the ghats of Rishikesh to the high Himalaya. Daily yoga practice, then a multi-day trek into the Garhwal mountains. Small groups, opening soon.">
+<title>Antara Experiences — Yoga & Spiritual Immersion, Rishikesh</title>
+<meta name="description" content="A guided yoga and spiritual immersion on the ghats of Rishikesh — daily asana and pranayama, sound healing, sacred ceremony, and sattvic living by the Ganga. Small groups, opening soon.">
 
-<meta property="og:title" content="Antara Experiences — Yoga & Himalayan Trek Immersion">
-<meta property="og:description" content="From the ghats of Rishikesh to the high Himalaya. Register your interest before dates open.">
+<meta property="og:title" content="Antara Experiences — Yoga & Spiritual Immersion, Rishikesh">
+<meta property="og:description" content="Daily practice on the Ganga, deepened by sound healing and ceremony. Register your interest before dates open.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;0,9..144,650;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -34,6 +34,9 @@
 
     --edge: 1px solid rgba(21,32,43,0.14);
     --edge-dark: 1px solid rgba(201,213,216,0.18);
+
+    --mx: 50%;
+    --my: 30%;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -56,6 +59,20 @@
   a{ color:inherit; text-decoration:none; }
   ul{ list-style:none; }
   button{ font:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+
+  /* film-grain texture, sits over everything, doesn't block interaction */
+  .grain{
+    position:fixed; inset:0; z-index:200; pointer-events:none;
+    opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* scroll progress */
+  .progress{
+    position:fixed; top:0; left:0; height:2px; width:0%; z-index:100;
+    background:linear-gradient(90deg, var(--brass-deep), var(--brass-bright));
+    transition:width 0.08s linear;
+  }
 
   .wrap{
     max-width:1120px;
@@ -90,22 +107,25 @@
     padding:18px clamp(20px,5vw,56px);
     display:flex; align-items:center; justify-content:space-between;
     background:transparent;
-    transition:background 0.35s ease, box-shadow 0.35s ease, border-color .35s ease;
+    transition:background 0.35s ease, box-shadow 0.35s ease, border-color .35s ease, padding .35s ease;
     border-bottom:1px solid transparent;
   }
   header.site-nav.scrolled{
-    background:rgba(232,226,210,0.92);
-    backdrop-filter:blur(10px);
+    background:rgba(232,226,210,0.86);
+    backdrop-filter:blur(14px) saturate(1.2);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);
     border-bottom:var(--edge);
+    padding-top:13px; padding-bottom:13px;
+    box-shadow:0 12px 30px -20px rgba(21,32,43,0.35);
   }
   .brand-mark{
     font-family:var(--font-display);
     font-weight:500;
     font-size:19px;
     letter-spacing:0.01em;
-    display:flex; align-items:baseline; gap:8px;
+    display:flex; align-items:center; gap:9px;
   }
-  .brand-mark .dot{ color:var(--brass); font-size:22px; line-height:0; }
+  .brand-mark .glyph{ width:18px; height:18px; color:var(--brass); flex-shrink:0; }
   .nav-links{ display:flex; gap:34px; align-items:center; }
   .nav-links a{
     font-family:var(--font-mono);
@@ -113,8 +133,14 @@
     letter-spacing:0.06em;
     text-transform:uppercase;
     opacity:0.8;
+    position:relative;
     transition:opacity 0.2s ease;
   }
+  .nav-links a:not(.nav-cta)::after{
+    content:''; position:absolute; left:0; right:100%; bottom:-4px; height:1px;
+    background:var(--brass); transition:right .25s ease;
+  }
+  .nav-links a:not(.nav-cta):hover::after{ right:0; }
   .nav-links a:hover{ opacity:1; }
   .nav-cta{
     font-family:var(--font-mono);
@@ -124,9 +150,9 @@
     padding:9px 18px;
     border:1px solid var(--ink);
     border-radius:2px;
-    transition:background 0.2s ease, color 0.2s ease, border-color .2s ease;
+    transition:background 0.2s ease, color 0.2s ease, border-color .2s ease, transform .2s ease;
   }
-  .nav-cta:hover{ background:var(--ink); color:var(--paper); }
+  .nav-cta:hover{ background:var(--ink); color:var(--paper); transform:translateY(-1px); }
   .nav-toggle{ display:none; }
 
   @media (max-width:760px){
@@ -154,30 +180,56 @@
   /* ---------- HERO :: STHAYI ---------- */
   .hero{
     position:relative;
-    padding:168px 0 96px;
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:150px 0 0;
     background:
-      radial-gradient(ellipse 900px 500px at 82% -10%, rgba(189,138,59,0.14), transparent 60%),
+      radial-gradient(ellipse 900px 500px at 82% -10%, rgba(189,138,59,0.16), transparent 60%),
       var(--paper);
     overflow:hidden;
   }
+  .hero-photo{ position:absolute; inset:0; z-index:1; overflow:hidden; }
+  .hero-photo img{
+    width:100%; height:100%; object-fit:cover; object-position:center 40%;
+    display:block; will-change:transform; transform:scale(1.06);
+  }
+  .hero-scrim{
+    position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:
+      linear-gradient(100deg, rgba(10,15,23,0.76) 0%, rgba(10,15,23,0.48) 38%, rgba(10,15,23,0.16) 62%, transparent 82%),
+      linear-gradient(to top, var(--paper) 0%, transparent 20%);
+  }
+  .hero-sun{
+    position:absolute; top:8%; right:12%; width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(221,174,94,0.55), rgba(221,174,94,0.12) 55%, transparent 72%);
+    filter:blur(4px);
+    mix-blend-mode:overlay;
+    z-index:2;
+    animation:sunPulse 7s ease-in-out infinite;
+  }
+  @keyframes sunPulse{ 0%,100%{ opacity:0.85; transform:scale(1); } 50%{ opacity:1; transform:scale(1.06); } }
+
   .hero-grid{
     display:grid;
     grid-template-columns:1.15fr 0.85fr;
     gap:48px;
     align-items:end;
     position:relative;
-    z-index:2;
+    z-index:3;
+    padding-bottom:64px;
+    will-change:transform;
   }
   .hero h1{
-    font-size:clamp(34px,5.4vw,64px);
-    line-height:1.06;
+    font-size:clamp(36px,5.8vw,68px);
+    line-height:1.05;
     margin-top:18px;
     max-width:15ch;
+    color:#F3EFE4;
   }
   .hero-sub{
     margin-top:26px;
     font-size:17px;
-    color:var(--ink-soft);
+    color:var(--mist);
     max-width:44ch;
     line-height:1.65;
   }
@@ -187,54 +239,68 @@
     font-size:13px;
     letter-spacing:0.06em;
     text-transform:uppercase;
-    background:var(--ink);
-    color:var(--paper);
+    background:var(--paper);
+    color:var(--ink);
     padding:15px 26px;
     border-radius:2px;
-    transition:background .2s ease, transform .2s ease;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
     display:inline-block;
   }
-  .btn-primary:hover{ background:var(--brass-deep); transform:translateY(-1px); }
+  .btn-primary:hover{ background:var(--brass-bright); transform:translateY(-2px); box-shadow:0 14px 26px -14px rgba(10,15,23,0.45); }
   .link-quiet{
     font-family:var(--font-mono);
     font-size:12.5px;
     letter-spacing:0.04em;
-    color:var(--ink-soft);
-    border-bottom:1px solid rgba(21,32,43,0.3);
+    color:var(--mist);
+    border-bottom:1px solid rgba(201,213,216,0.35);
     padding-bottom:2px;
+    transition:border-color .2s ease, color .2s ease;
   }
+  .link-quiet:hover{ color:#F3EFE4; border-color:#F3EFE4; }
   .hero-figures{
     font-family:var(--font-mono);
     font-size:12.5px;
     color:var(--ink-soft);
     display:flex; flex-direction:column; gap:14px;
-    padding-bottom:6px;
+    padding:20px 22px;
+    background:rgba(232,226,210,0.82);
+    backdrop-filter:blur(10px);
+    border:var(--edge);
+    border-radius:3px;
   }
   .hero-figures .fig-row{ display:flex; justify-content:space-between; gap:14px; border-bottom:var(--edge); padding-bottom:10px; }
+  .hero-figures .fig-row:last-child{ border-bottom:none; padding-bottom:0; }
   .hero-figures .fig-num{ color:var(--ink); font-weight:500; }
 
-  /* elevation / melodic contour line */
-  .contour{
-    position:absolute; left:0; right:0; bottom:0; width:100%; height:auto;
-    opacity:0.9;
+  .scroll-cue{
+    position:relative; z-index:3; margin:0 auto; padding-bottom:26px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--ink-soft); opacity:0.7;
   }
-  .contour path{
-    fill:none; stroke:var(--brass); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
-    stroke-dasharray:2000; stroke-dashoffset:2000;
-    animation:draw 2.4s 0.3s cubic-bezier(.5,0,.2,1) forwards;
-  }
-  .contour path.fill-under{ stroke:none; fill:url(#contourFade); animation:none; opacity:0; transition:opacity 1.6s ease 1.4s; }
-  .contour.revealed path.fill-under{ opacity:1; }
-  .contour circle{ fill:var(--brass); opacity:0; animation:pop 0.5s ease forwards; }
-  @keyframes draw{ to{ stroke-dashoffset:0; } }
-  @keyframes pop{ to{ opacity:1; } }
-  @media (prefers-reduced-motion: reduce){
-    .contour path{ animation:none; stroke-dashoffset:0; }
-    .contour circle{ animation:none; opacity:1; }
-  }
+  .scroll-cue .line{ width:1px; height:26px; background:linear-gradient(180deg, var(--brass), transparent); animation:cueMove 1.8s ease-in-out infinite; }
+  @keyframes cueMove{ 0%{ transform:scaleY(0.4); transform-origin:top; opacity:0.4; } 50%{ transform:scaleY(1); opacity:1; } 100%{ transform:scaleY(0.4); transform-origin:bottom; opacity:0.4; } }
+
+  /* ---------- section divider waves ---------- */
+  .divider{ position:relative; line-height:0; z-index:2; }
+  .divider svg{ width:100%; height:56px; display:block; }
+  .divider.to-dark{ background:var(--paper); }
+  .divider.to-light{ background:var(--paper); }
 
   /* ---------- ALAP ---------- */
-  .alap{ padding:88px 0 96px; background:var(--paper); border-top:var(--edge); }
+  .alap{ padding:80px 0 96px; background:var(--paper); position:relative; }
+  .alap-photo{
+    position:relative; overflow:hidden; border-radius:4px; margin-bottom:52px;
+    aspect-ratio:21/9; box-shadow:0 30px 60px -34px rgba(21,32,43,0.4);
+  }
+  .alap-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 60%; display:block; }
+  .alap-photo .cap{
+    position:absolute; left:18px; bottom:16px;
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:#F3EFE4; background:rgba(10,15,23,0.5); backdrop-filter:blur(6px);
+    padding:6px 12px; border-radius:2px;
+  }
+  @media (max-width:700px){ .alap-photo{ aspect-ratio:4/3; } }
   .alap-grid{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; }
   .alap h2{ font-size:clamp(26px,3.4vw,38px); line-height:1.15; margin-top:16px; max-width:12ch; }
   .alap-body p{ font-size:16.5px; color:var(--ink-soft); max-width:56ch; line-height:1.75; }
@@ -244,10 +310,25 @@
   /* ---------- ANTARA (dark, the rise) ---------- */
   .antara{
     position:relative;
-    background:linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+    background:var(--night-deep);
     color:var(--mist);
-    padding:104px 0 108px;
+    padding:96px 0 100px;
+    overflow:hidden;
   }
+  .antara-photo{ position:absolute; inset:0; z-index:0; }
+  .antara-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 45%; display:block; }
+  .antara-scrim{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(10,15,23,0.6) 0%, rgba(10,15,23,0.82) 55%, rgba(10,15,23,0.94) 100%);
+  }
+  .antara::before{
+    content:'';
+    position:absolute; inset:0; z-index:2;
+    background:radial-gradient(560px 420px at var(--mx) var(--my), rgba(189,138,59,0.2), transparent 65%);
+    transition:background .25s ease;
+    pointer-events:none;
+  }
+  .antara .wrap{ position:relative; z-index:3; }
   .antara .eyebrow{ color:var(--brass-bright); }
   .antara h2{
     color:#F3EFE4;
@@ -265,7 +346,9 @@
     grid-template-columns:repeat(4,1fr);
     border-top:var(--edge-dark);
   }
-  .stat{ padding:26px 22px 0; border-right:var(--edge-dark); }
+  .stat{ padding:26px 22px 0; border-right:var(--edge-dark); position:relative; }
+  .stat::before{ content:''; position:absolute; top:-1px; left:0; width:0; height:1px; background:var(--brass-bright); transition:width .8s ease .1s; }
+  .stat.in::before{ width:100%; }
   .stat:last-child{ border-right:none; }
   .stat .num{ font-family:var(--font-mono); font-size:clamp(22px,2.6vw,30px); color:var(--brass-bright); }
   .stat .label{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--mist-dim); margin-top:8px; }
@@ -277,7 +360,7 @@
   }
 
   /* ---------- VISTAR ---------- */
-  .vistar{ padding:100px 0 104px; background:var(--paper); border-top:var(--edge); }
+  .vistar{ padding:100px 0 104px; background:var(--paper); }
   .vistar-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
   .vistar h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:12ch; }
   .vistar-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
@@ -288,13 +371,19 @@
     gap:1px;
     background:rgba(21,32,43,0.14);
     border:var(--edge);
+    perspective:900px;
   }
   .held-card{
     background:var(--paper);
-    padding:30px 26px 32px;
-    transition:background .25s ease;
+    padding:0 0 32px;
+    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+    transform-style:preserve-3d;
+    position:relative;
   }
-  .held-card:hover{ background:var(--paper-deep); }
+  .held-card:hover{ background:var(--paper-deep); box-shadow:0 22px 40px -28px rgba(21,32,43,0.4); z-index:2; }
+  .held-swatch{ height:76px; width:100%; position:relative; overflow:hidden; }
+  .held-swatch svg{ width:100%; height:100%; display:block; }
+  .held-card .body{ padding:22px 26px 0; }
   .held-card .mark{ font-family:var(--font-mono); font-size:12px; color:var(--brass-deep); }
   .held-card h3{ font-size:18px; font-weight:560; margin-top:14px; }
   .held-card p{ font-size:14.5px; color:var(--ink-soft); margin-top:10px; line-height:1.6; }
@@ -304,13 +393,48 @@
     .held-grid{ grid-template-columns:1fr; }
   }
 
+  /* ---------- JHALAK (gallery) ---------- */
+  .jhalak{ padding:8px 0 108px; background:var(--paper); }
+  .jhalak-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:48px; }
+  .jhalak-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
+  .jhalak-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+
+  .jhalak-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:40px 28px; }
+  @media (max-width:700px){ .jhalak-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  .jhalak-item .frame{
+    position:relative; overflow:hidden; border-radius:3px; background:var(--paper-deep);
+    aspect-ratio:4/5;
+  }
+  .jhalak-item .frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .7s cubic-bezier(.2,.6,.2,1);
+  }
+  .jhalak-item:hover .frame img{ transform:scale(1.045); }
+  .jhalak-item .cat{
+    display:block; margin-top:18px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--brass-deep);
+  }
+  .jhalak-item .desc{
+    margin-top:6px; font-size:15.5px; color:var(--ink-soft); line-height:1.6; max-width:38ch;
+  }
+
   /* ---------- TIHAI (close + form) ---------- */
   .tihai{
     position:relative;
     background:var(--night-deep);
     color:var(--mist);
-    padding:110px 0 96px;
+    padding:104px 0 96px;
+    overflow:hidden;
   }
+  .tihai::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(560px 420px at var(--mx) var(--my), rgba(189,138,59,0.14), transparent 65%);
+    pointer-events:none;
+  }
+  .tihai .wrap{ position:relative; z-index:1; }
   .cadence{ display:flex; flex-direction:column; gap:2px; margin-bottom:56px; }
   .cadence span{
     font-family:var(--font-display);
@@ -346,9 +470,9 @@
   .btn-brass{
     font-family:var(--font-mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
     background:var(--brass); color:var(--night-deep); padding:15px 28px; border-radius:2px;
-    transition:background .2s ease, transform .2s ease;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
   }
-  .btn-brass:hover{ background:var(--brass-bright); transform:translateY(-1px); }
+  .btn-brass:hover{ background:var(--brass-bright); transform:translateY(-2px); box-shadow:0 16px 30px -16px rgba(221,174,94,0.45); }
   .form-note{ font-size:12.5px; color:var(--mist-dim); }
   .form-success{
     display:none; font-family:var(--font-display); font-size:19px; color:var(--brass-bright); padding-top:8px;
@@ -373,14 +497,15 @@
   }
   .foot-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .foot-row .brand-mark{ color:var(--mist); font-size:16px; }
+  .foot-row .brand-mark .glyph{ color:var(--brass-bright); }
   .foot-links{ display:flex; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; }
   .foot-links a{ opacity:0.8; transition:opacity .2s ease; }
   .foot-links a:hover{ opacity:1; }
   .foot-fine{ font-family:var(--font-mono); font-size:11px; margin-top:22px; opacity:0.6; }
 
   /* reveal-on-scroll */
-  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal{ opacity:0; transform:translateY(22px) scale(0.98); transition:opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1); transition-delay:var(--d, 0ms); }
+  .reveal.in{ opacity:1; transform:translateY(0) scale(1); }
   @media (prefers-reduced-motion: reduce){
     .reveal{ opacity:1; transform:none; transition:none; }
   }
@@ -388,12 +513,19 @@
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progressBar"></div>
+
 <header class="site-nav" id="siteNav">
-  <a href="#top" class="brand-mark">Antara<span class="dot">·</span>Experiences</a>
+  <a href="#top" class="brand-mark">
+    <svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 18L8.5 7L12.5 13.5L15 10L22 18H2Z" fill="currentColor"/></svg>
+    Antara<span style="color:var(--brass);">·</span>Experiences
+  </a>
   <nav class="nav-links" id="navLinks">
     <a href="#why">Alap</a>
     <a href="#journey">Antara</a>
     <a href="#details">Vistar</a>
+    <a href="#glimpse">Jhalak</a>
     <a href="#join" class="nav-cta">Register interest</a>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
@@ -405,64 +537,73 @@
 
   <!-- ===== HERO :: STHAYI ===== -->
   <section class="hero">
+    <div class="hero-photo" aria-hidden="true">
+      <img src="assets/hero.jpg" alt="" fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-sun" aria-hidden="true"></div>
+
     <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow on-light"><span class="term">Sthayi</span><span class="gloss">— the ground you begin from</span></p>
-        <h1>Your practice already knows the mountains are next.</h1>
-        <p class="hero-sub">Antara Experiences is a guided immersion from the ghats of Rishikesh to the high Garhwal Himalaya — daily yoga practice, then a multi-day trek above the treeline. Built for practitioners who came for stillness and are ready to climb.</p>
+      <div class="reveal in">
+        <p class="eyebrow on-dark"><span class="term">Sthayi</span><span class="gloss">— the ground you begin from</span></p>
+        <h1>Your practice already knows there's more beneath the surface.</h1>
+        <p class="hero-sub">Antara Experiences is a guided yoga and spiritual immersion on the ghats of Rishikesh — daily asana and pranayama, sound healing, sacred ceremony, and sattvic living by the Ganga. Built for practitioners who came for a class and are ready for a practice.</p>
         <div class="hero-actions">
           <a href="#join" class="btn-primary">Register your interest</a>
           <a href="#why" class="link-quiet">Read how it's built ↓</a>
         </div>
       </div>
-      <div class="hero-figures">
+      <div class="hero-figures reveal in" style="--d:120ms">
         <div class="fig-row"><span>Rishikesh, Uttarakhand</span><span class="fig-num">Origin</span></div>
-        <div class="fig-row"><span>Yoga, then trek</span><span class="fig-num">Two Registers</span></div>
+        <div class="fig-row"><span>Practice & ceremony</span><span class="fig-num">Two Registers</span></div>
         <div class="fig-row"><span>Opening soon</span><span class="fig-num">First Batch</span></div>
       </div>
     </div>
 
-    <svg class="contour" id="contourSvg" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="contourFade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#BD8A3B" stop-opacity="0.16"/>
-          <stop offset="100%" stop-color="#BD8A3B" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path class="fill-under" d="M0,220 L0,190 L90,168 L180,178 L280,120 L360,142 L450,84 L540,104 L630,52 L730,74 L830,30 L940,52 L1040,16 L1200,30 L1200,220 Z"/>
-      <path d="M0,190 L90,168 L180,178 L280,120 L360,142 L450,84 L540,104 L630,52 L730,74 L830,30 L940,52 L1040,16 L1200,30"/>
-      <circle cx="830" cy="30" r="3.5" style="animation-delay:2.1s"/>
-      <circle cx="1040" cy="16" r="3.5" style="animation-delay:2.3s"/>
-    </svg>
+    <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
   </section>
 
   <!-- ===== ALAP ===== -->
   <section class="alap" id="why">
+    <div class="wrap">
+      <div class="alap-photo reveal">
+        <img src="assets/rishikesh-town.jpg" alt="The temples of Rishikesh on the banks of the Ganga, with rafts on the river and the Himalayan foothills behind" loading="lazy" decoding="async">
+        <span class="cap">Rishikesh, on the Ganga</span>
+      </div>
+    </div>
     <div class="wrap alap-grid">
       <div class="reveal">
         <p class="eyebrow on-light"><span class="term">Alap</span><span class="gloss">— no fixed tempo yet</span></p>
-        <h2>Why yoga and altitude belong in the same sentence</h2>
+        <h2>Why Rishikesh, and why more than asana</h2>
       </div>
-      <div class="alap-body reveal">
-        <p>Rishikesh sits where the Ganga leaves the mountains and becomes a plain — which is also roughly where most yoga practice stops. You learn to lengthen the breath on a mat, in a room, at sea-level ease. <strong>Altitude asks the same question the practice does, just with less patience.</strong></p>
-        <p>Above 3,000 metres, the air thins enough that breath stops being automatic. You notice it the way you're taught to notice it in pranayama — except now a ridge line is waiting on the other side of noticing. That's the shape of this journey: a week finding your breath on the ghats, then days spent proving it on a trail.</p>
+      <div class="alap-body reveal" style="--d:100ms">
+        <p>Rishikesh has been a seat of practice for longer than yoga has been a wellness word. The ghats where you'll sit each morning are the same stretch of river people have come to for centuries — <strong>the postures were never separate from the spiritual work underneath them.</strong></p>
+        <p>A studio class can teach you the shapes. It rarely has room for the rest — the chanting, the fire ceremony, the stretch of stillness that pranayama is actually pointing toward. That's the gap this immersion is built to close: ten days where the physical practice and the spiritual one are taught as one thing, not two.</p>
       </div>
     </div>
   </section>
 
+  <div class="divider to-dark" aria-hidden="true">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none"><path d="M0,56 L0,30 C 200,4 400,50 600,26 C 800,2 1000,44 1200,20 L1200,56 Z" fill="var(--night)"/></svg>
+  </div>
+
   <!-- ===== ANTARA (the rise) ===== -->
   <section class="antara" id="journey">
+    <div class="antara-photo" aria-hidden="true">
+      <img src="assets/antara-bg.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <div class="antara-scrim" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow on-dark reveal"><span class="term">Antara</span><span class="gloss">— the rise, the part that names the whole piece</span></p>
-      <h2 class="reveal">The Yoga + Himalayan Trek Immersion</h2>
-      <p class="antara-lede reveal">The first half is grounded in Rishikesh: morning asana and pranayama on the river, meditation, and a slower rhythm to the day than most guests arrive with. The second half leaves the ashram behind for a guided ascent into the Garhwal Himalaya — camping above the treeline, walking mornings, and a summit push timed to weather rather than a spreadsheet.</p>
-      <p class="antara-lede reveal">No trekking experience is assumed. The practice in week one is, in part, training for week two.</p>
+      <h2 class="reveal" style="--d:60ms">The Yoga & Spiritual Immersion</h2>
+      <p class="antara-lede reveal" style="--d:120ms">Mornings open on the river: asana and pranayama as the ghats wake up, then a slower rhythm to the day than most guests arrive with. Afternoons hold meditation, sound healing, and time simply spent doing less. Evenings gather for the Ganga aarti, the fire and bells rolling out over the water.</p>
+      <p class="antara-lede reveal" style="--d:170ms">Nothing here rushes toward a summit. The rise is inward — from a practice you perform to one you inhabit, over ten days by the river.</p>
 
-      <div class="stat-strip reveal">
-        <div class="stat"><div class="num">10</div><div class="label">Days, door to door</div></div>
-        <div class="stat"><div class="num">2</div><div class="label">Landscapes, one journey</div></div>
-        <div class="stat"><div class="num">~3,800m</div><div class="label">Peak altitude</div></div>
-        <div class="stat"><div class="num">8–12</div><div class="label">Guests per batch</div></div>
+      <div class="stat-strip reveal" style="--d:220ms">
+        <div class="stat"><div class="num" data-value="10" data-suffix="">0</div><div class="label">Days, door to door</div></div>
+        <div class="stat"><div class="num" data-value="2" data-suffix="×">0</div><div class="label">Practice sessions daily</div></div>
+        <div class="stat"><div class="num" data-value="5" data-suffix="">0</div><div class="label">Ceremonies & rituals</div></div>
+        <div class="stat"><div class="num" data-value="8" data-suffix="–12">0</div><div class="label">Guests per batch</div></div>
       </div>
     </div>
   </section>
@@ -475,43 +616,101 @@
           <p class="eyebrow on-light"><span class="term">Vistar</span><span class="gloss">— the elaboration</span></p>
           <h2>What's held for you</h2>
         </div>
-        <p>Everything logistical is arranged so the only real decision left is whether to keep walking. This is what's included on both halves of the journey.</p>
+        <p>Everything logistical is arranged so the only real decision left is how deep to go. This is what's included across the ten days.</p>
       </div>
 
-      <div class="held-grid reveal">
-        <div class="held-card">
-          <p class="mark">01</p>
-          <h3>Daily practice</h3>
-          <p>Asana and pranayama each morning on the riverside, led by Rishikesh-trained instructors.</p>
+      <div class="held-grid">
+        <div class="held-card reveal" style="--d:0ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="60" cy="38" r="10" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.4"/><circle cx="60" cy="38" r="22" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.24"/><circle cx="60" cy="38" r="34" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.13"/></svg></div>
+          <div class="body">
+            <p class="mark">01</p>
+            <h3>Daily practice</h3>
+            <p>Asana and pranayama each morning on the riverside, led by Rishikesh-trained instructors.</p>
+          </div>
         </div>
-        <div class="held-card">
-          <p class="mark">02</p>
-          <h3>Sattvic meals</h3>
-          <p>Vegetarian food cooked in the ashram tradition — the same meals that fuel the trek days.</p>
+        <div class="held-card reveal" style="--d:60ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M0,20 C 80,50 120,10 200,36 C 240,48 270,30 300,40 L300,76 L0,76 Z" fill="var(--mist-dim)" opacity="0.32"/></svg></div>
+          <div class="body">
+            <p class="mark">02</p>
+            <h3>Sattvic meals</h3>
+            <p>Vegetarian food cooked in the ashram tradition — the same meals that carry you through the day's practice.</p>
+          </div>
         </div>
-        <div class="held-card">
-          <p class="mark">03</p>
-          <h3>Guided ascent</h3>
-          <p>Certified local trek leaders, all permits and mountain logistics handled before you land.</p>
+        <div class="held-card reveal" style="--d:120ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M150,20 C160,32 160,44 150,50 C140,44 140,32 150,20 Z" fill="var(--brass)" opacity="0.34"/><path d="M90,30 C97,39 97,48 90,53 C83,48 83,39 90,30 Z" fill="var(--ink)" opacity="0.16"/><path d="M210,30 C217,39 217,48 210,53 C203,48 203,39 210,30 Z" fill="var(--ink)" opacity="0.16"/></svg></div>
+          <div class="body">
+            <p class="mark">03</p>
+            <h3>Ceremony & ritual</h3>
+            <p>Ganga aarti, sound healing, and a traditional welcome rite — held for the group, not performed for tourists.</p>
+          </div>
         </div>
-        <div class="held-card">
-          <p class="mark">04</p>
-          <h3>Small batches</h3>
-          <p>Capped at 8–12 guests, so the ridge line stays quiet and the practice stays personal.</p>
+        <div class="held-card reveal" style="--d:0ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="60" cy="38" r="16" fill="var(--brass)" opacity="0.25"/><circle cx="140" cy="38" r="16" fill="var(--brass)" opacity="0.25"/><circle cx="220" cy="38" r="16" fill="var(--brass)" opacity="0.25"/></svg></div>
+          <div class="body">
+            <p class="mark">04</p>
+            <h3>Small batches</h3>
+            <p>Capped at 8–12 guests, so the circle stays quiet and the practice stays personal.</p>
+          </div>
         </div>
-        <div class="held-card">
-          <p class="mark">05</p>
-          <h3>Two landscapes</h3>
-          <p>Days on the Ganga in Rishikesh, then days above the treeline — one itinerary, two registers.</p>
+        <div class="held-card reveal" style="--d:60ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M0,50 C 60,30 100,60 160,36 C 210,16 260,42 300,26" fill="none" stroke="var(--mist-dim)" stroke-width="2" opacity="0.38"/><path d="M0,62 C 60,46 100,66 170,50 C 220,38 260,56 300,44" fill="none" stroke="var(--brass)" stroke-width="1.5" opacity="0.26"/></svg></div>
+          <div class="body">
+            <p class="mark">05</p>
+            <h3>River & temple days</h3>
+            <p>Time on the ghats, at ashrams, and at temples nearby — the outings that round out the practice.</p>
+          </div>
         </div>
-        <div class="held-card">
-          <p class="mark">06</p>
-          <h3>Everything carried</h3>
-          <p>Camping gear, permits, and support staff are arranged — you carry a daypack, not a checklist.</p>
+        <div class="held-card reveal" style="--d:120ms">
+          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="150" cy="38" r="5" fill="var(--brass)" opacity="0.4"/><circle cx="130" cy="30" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="170" cy="30" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="130" cy="48" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="170" cy="48" r="4" fill="var(--ink)" opacity="0.18"/></svg></div>
+          <div class="body">
+            <p class="mark">06</p>
+            <h3>Everything arranged</h3>
+            <p>Transport, ceremony materials, and support are handled — you show up, and practice.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== JHALAK :: gallery ===== -->
+  <section class="jhalak" id="glimpse">
+    <div class="wrap">
+      <div class="jhalak-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Jhalak</span><span class="gloss">— a glimpse, caught mid-motion</span></p>
+          <h2>What past circles have looked like</h2>
+        </div>
+        <p>A few frames from recent groups: on the ghats, in ceremony, and around the fire.</p>
+      </div>
+
+      <div class="jhalak-grid">
+        <figure class="jhalak-item reveal" style="--d:0ms">
+          <div class="frame"><img src="assets/gallery/yogic-sessions/01.jpg" alt="A group practising yoga at dusk on a rooftop terrace above the Ganga in Rishikesh" loading="lazy" decoding="async"></div>
+          <span class="cat">Yogic sessions</span>
+          <p class="desc">Asana and pranayama on the ghats, morning and evening.</p>
+        </figure>
+        <figure class="jhalak-item reveal" style="--d:60ms">
+          <div class="frame"><img src="assets/gallery/sound-healing/01.jpg" alt="A participant seated in front of a marigold Om rangoli lit with candles, ahead of a sound healing session" loading="lazy" decoding="async"></div>
+          <span class="cat">Sound healing</span>
+          <p class="desc">A marigold Om, candlelight, and a bowl held until the room goes quiet.</p>
+        </figure>
+        <figure class="jhalak-item reveal" style="--d:0ms">
+          <div class="frame"><img src="assets/gallery/outings/05.jpg" alt="The group at a temple in Rishikesh, lit up at dusk" loading="lazy" decoding="async"></div>
+          <span class="cat">Temple visit</span>
+          <p class="desc">Evenings at the temples along the river, aarti light on the water.</p>
+        </figure>
+        <figure class="jhalak-item reveal" style="--d:60ms">
+          <div class="frame"><img src="assets/gallery/traditional-marriage/02.jpg" alt="A traditional welcome ceremony held for the group" loading="lazy" decoding="async"></div>
+          <span class="cat">Traditional culture</span>
+          <p class="desc">A ceremony held for every new group, before the ten days begin.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider to-light" aria-hidden="true">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none"><path d="M0,0 L0,26 C 200,50 400,6 600,30 C 800,54 1000,12 1200,36 L1200,0 Z" fill="var(--night-deep)"/></svg>
+  </div>
 
   <!-- ===== TIHAI :: close + form ===== -->
   <section class="tihai" id="join">
@@ -529,7 +728,7 @@
           <p class="tihai-copy">We're testing interest before locking a calendar or a price. Leave your details and you'll hear first when a batch is confirmed — no payment, no commitment, just first word.</p>
         </div>
 
-        <div class="reveal">
+        <div class="reveal" style="--d:100ms">
           <form class="waitlist" id="waitlistForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             <div class="field">
               <label for="wl-name">Name</label>
@@ -542,8 +741,8 @@
             <div class="field">
               <label>Which pulls you more?</label>
               <div class="radio-row">
-                <label class="radio-opt"><input type="radio" name="pull" value="Yoga practice"> The yoga</label>
-                <label class="radio-opt"><input type="radio" name="pull" value="The trek"> The trek</label>
+                <label class="radio-opt"><input type="radio" name="pull" value="The daily practice"> The daily practice</label>
+                <label class="radio-opt"><input type="radio" name="pull" value="Ceremony & sound healing"> Ceremony & sound healing</label>
                 <label class="radio-opt"><input type="radio" name="pull" value="Both equally" checked> Both, equally</label>
               </div>
             </div>
@@ -563,7 +762,10 @@
 <footer>
   <div class="wrap">
     <div class="foot-row">
-      <a href="#top" class="brand-mark">Antara Experiences</a>
+      <a href="#top" class="brand-mark">
+        <svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 18L8.5 7L12.5 13.5L15 10L22 18H2Z" fill="currentColor"/></svg>
+        Antara Experiences
+      </a>
       <div class="foot-links">
         <a href="mailto:hello@antaraexperiences.com">hello@antaraexperiences.com</a>
         <a href="https://instagram.com/antaraexperiences" target="_blank" rel="noopener">Instagram</a>
@@ -576,7 +778,12 @@
 <script>
   // Nav scroll state
   const nav = document.getElementById('siteNav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  const progressBar = document.getElementById('progressBar');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  };
   document.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 
@@ -594,23 +801,82 @@
     toggle.setAttribute('aria-expanded', false);
   }));
 
-  // Reveal on scroll
+  // Reveal on scroll (also triggers count-up + stat underline)
   const revealEls = document.querySelectorAll('.reveal');
+  const countUp = (el) => {
+    const target = parseFloat(el.dataset.value);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const dur = 1100;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          e.target.querySelectorAll('.stat').forEach(s => s.classList.add('in'));
+          e.target.querySelectorAll('.num[data-value]').forEach(countUp);
+          io.unobserve(e.target);
+        }
+      });
     }, { threshold:0.15 });
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('in'));
+    document.querySelectorAll('.num[data-value]').forEach(el => {
+      el.textContent = (el.dataset.prefix||'') + el.dataset.value + (el.dataset.suffix||'');
+    });
   }
-
-  // Contour fill reveal
-  const contour = document.getElementById('contourSvg');
-  setTimeout(() => contour.classList.add('revealed'), 300);
 
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Parallax on hero photo + heading, and mouse spotlight on dark sections
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroPhoto = document.querySelector('.hero-photo img');
+  const heroGrid = document.querySelector('.hero-grid');
+  let ticking = false;
+  const onParallaxScroll = () => {
+    if (ticking || reduceMotion) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (heroPhoto) heroPhoto.style.transform = `scale(1.06) translateY(${Math.min(y * 0.12, 90)}px)`;
+      if (heroGrid) heroGrid.style.transform = `translateY(${Math.min(y * 0.12, 60)}px)`;
+      ticking = false;
+    });
+  };
+  document.addEventListener('scroll', onParallaxScroll, { passive:true });
+
+  if (!reduceMotion) {
+    document.querySelectorAll('.antara, .tihai').forEach(section => {
+      section.addEventListener('mousemove', (e) => {
+        const r = section.getBoundingClientRect();
+        section.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        section.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+
+    // Subtle tilt on held-cards
+    document.querySelectorAll('.held-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${py * -4}deg) rotateY(${px * 4}deg) translateY(-2px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
 
   // Waitlist form — progressive enhancement over the plain Formspree POST
   const form = document.getElementById('waitlistForm');
