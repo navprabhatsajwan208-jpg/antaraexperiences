@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antara Experiences — Yoga & Himalayan Trek Immersion, Rishikesh</title>
+<meta name="description" content="A guided immersion from the ghats of Rishikesh to the high Himalaya. Daily yoga practice, then a multi-day trek into the Garhwal mountains. Small groups, opening soon.">
+
+<meta property="og:title" content="Antara Experiences — Yoga & Himalayan Trek Immersion">
+<meta property="og:description" content="From the ghats of Rishikesh to the high Himalaya. Register your interest before dates open.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:        #15202B;
+    --ink-soft:   #4A5A68;
+    --paper:      #E8E2D2;
+    --paper-deep: #DBD3BC;
+    --night:      #101722;
+    --night-deep: #0A0F17;
+    --mist:       #C9D5D8;
+    --mist-dim:   #91A3A8;
+    --brass:      #BD8A3B;
+    --brass-bright:#DDAE5E;
+    --brass-deep: #8A5E24;
+
+    --font-display:'Fraunces', serif;
+    --font-body:   'Work Sans', sans-serif;
+    --font-mono:   'JetBrains Mono', monospace;
+
+    --edge: 1px solid rgba(21,32,43,0.14);
+    --edge-dark: 1px solid rgba(201,213,216,0.18);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  button{ font:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding-left:clamp(20px,5vw,56px);
+    padding-right:clamp(20px,5vw,56px);
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .eyebrow .term{ font-weight:500; }
+  .eyebrow .gloss{ font-weight:400; opacity:0.68; text-transform:none; letter-spacing:0.02em; }
+  .eyebrow.on-light{ color:var(--brass-deep); }
+  .eyebrow.on-dark{ color:var(--brass-bright); }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:560;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    padding:18px clamp(20px,5vw,56px);
+    display:flex; align-items:center; justify-content:space-between;
+    background:transparent;
+    transition:background 0.35s ease, box-shadow 0.35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.site-nav.scrolled{
+    background:rgba(232,226,210,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:var(--edge);
+  }
+  .brand-mark{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:19px;
+    letter-spacing:0.01em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand-mark .dot{ color:var(--brass); font-size:22px; line-height:0; }
+  .nav-links{ display:flex; gap:34px; align-items:center; }
+  .nav-links a{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    opacity:0.8;
+    transition:opacity 0.2s ease;
+  }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border:1px solid var(--ink);
+    border-radius:2px;
+    transition:background 0.2s ease, color 0.2s ease, border-color .2s ease;
+  }
+  .nav-cta:hover{ background:var(--ink); color:var(--paper); }
+  .nav-toggle{ display:none; }
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:0 0 0 auto; width:78%; max-width:320px;
+      background:var(--ink); color:var(--paper);
+      flex-direction:column; align-items:flex-start; justify-content:center;
+      gap:26px; padding:40px;
+      transform:translateX(100%);
+      transition:transform 0.4s cubic-bezier(.65,0,.35,1);
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-links a{ font-size:14px; opacity:0.9; }
+    .nav-cta{ border-color:var(--paper); }
+    .nav-toggle{
+      display:flex; flex-direction:column; gap:5px; z-index:60; position:relative;
+      width:26px;
+    }
+    .nav-toggle span{ height:1.5px; width:100%; background:var(--ink); transition:transform .3s ease, opacity .3s ease; }
+    .nav-toggle.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2){ opacity:0; }
+    .nav-toggle.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+  }
+
+  /* ---------- HERO :: STHAYI ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 96px;
+    background:
+      radial-gradient(ellipse 900px 500px at 82% -10%, rgba(189,138,59,0.14), transparent 60%),
+      var(--paper);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:end;
+    position:relative;
+    z-index:2;
+  }
+  .hero h1{
+    font-size:clamp(34px,5.4vw,64px);
+    line-height:1.06;
+    margin-top:18px;
+    max-width:15ch;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:44ch;
+    line-height:1.65;
+  }
+  .hero-actions{ display:flex; align-items:center; gap:26px; margin-top:36px; flex-wrap:wrap; }
+  .btn-primary{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--ink);
+    color:var(--paper);
+    padding:15px 26px;
+    border-radius:2px;
+    transition:background .2s ease, transform .2s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background:var(--brass-deep); transform:translateY(-1px); }
+  .link-quiet{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    border-bottom:1px solid rgba(21,32,43,0.3);
+    padding-bottom:2px;
+  }
+  .hero-figures{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex; flex-direction:column; gap:14px;
+    padding-bottom:6px;
+  }
+  .hero-figures .fig-row{ display:flex; justify-content:space-between; gap:14px; border-bottom:var(--edge); padding-bottom:10px; }
+  .hero-figures .fig-num{ color:var(--ink); font-weight:500; }
+
+  /* elevation / melodic contour line */
+  .contour{
+    position:absolute; left:0; right:0; bottom:0; width:100%; height:auto;
+    opacity:0.9;
+  }
+  .contour path{
+    fill:none; stroke:var(--brass); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:2000; stroke-dashoffset:2000;
+    animation:draw 2.4s 0.3s cubic-bezier(.5,0,.2,1) forwards;
+  }
+  .contour path.fill-under{ stroke:none; fill:url(#contourFade); animation:none; opacity:0; transition:opacity 1.6s ease 1.4s; }
+  .contour.revealed path.fill-under{ opacity:1; }
+  .contour circle{ fill:var(--brass); opacity:0; animation:pop 0.5s ease forwards; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes pop{ to{ opacity:1; } }
+  @media (prefers-reduced-motion: reduce){
+    .contour path{ animation:none; stroke-dashoffset:0; }
+    .contour circle{ animation:none; opacity:1; }
+  }
+
+  /* ---------- ALAP ---------- */
+  .alap{ padding:88px 0 96px; background:var(--paper); border-top:var(--edge); }
+  .alap-grid{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; }
+  .alap h2{ font-size:clamp(26px,3.4vw,38px); line-height:1.15; margin-top:16px; max-width:12ch; }
+  .alap-body p{ font-size:16.5px; color:var(--ink-soft); max-width:56ch; line-height:1.75; }
+  .alap-body p + p{ margin-top:18px; }
+  .alap-body strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- ANTARA (dark, the rise) ---------- */
+  .antara{
+    position:relative;
+    background:linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+    color:var(--mist);
+    padding:104px 0 108px;
+  }
+  .antara .eyebrow{ color:var(--brass-bright); }
+  .antara h2{
+    color:#F3EFE4;
+    font-size:clamp(28px,4vw,44px);
+    line-height:1.14;
+    margin-top:16px;
+    max-width:16ch;
+  }
+  .antara-lede{ margin-top:22px; font-size:16.5px; color:var(--mist); max-width:58ch; line-height:1.75; }
+  .antara-lede + .antara-lede{ margin-top:14px; }
+
+  .stat-strip{
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:var(--edge-dark);
+  }
+  .stat{ padding:26px 22px 0; border-right:var(--edge-dark); }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family:var(--font-mono); font-size:clamp(22px,2.6vw,30px); color:var(--brass-bright); }
+  .stat .label{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--mist-dim); margin-top:8px; }
+
+  @media (max-width:760px){
+    .stat-strip{ grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(2){ border-right:none; }
+    .stat:nth-child(3), .stat:nth-child(4){ border-top:var(--edge-dark); padding-top:22px; margin-top:22px; }
+  }
+
+  /* ---------- VISTAR ---------- */
+  .vistar{ padding:100px 0 104px; background:var(--paper); border-top:var(--edge); }
+  .vistar-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
+  .vistar h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:12ch; }
+  .vistar-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+
+  .held-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:rgba(21,32,43,0.14);
+    border:var(--edge);
+  }
+  .held-card{
+    background:var(--paper);
+    padding:30px 26px 32px;
+    transition:background .25s ease;
+  }
+  .held-card:hover{ background:var(--paper-deep); }
+  .held-card .mark{ font-family:var(--font-mono); font-size:12px; color:var(--brass-deep); }
+  .held-card h3{ font-size:18px; font-weight:560; margin-top:14px; }
+  .held-card p{ font-size:14.5px; color:var(--ink-soft); margin-top:10px; line-height:1.6; }
+
+  @media (max-width:760px){
+    .vistar-head{ grid-template-columns:1fr; gap:20px; }
+    .held-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- TIHAI (close + form) ---------- */
+  .tihai{
+    position:relative;
+    background:var(--night-deep);
+    color:var(--mist);
+    padding:110px 0 96px;
+  }
+  .cadence{ display:flex; flex-direction:column; gap:2px; margin-bottom:56px; }
+  .cadence span{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(20px,3vw,30px);
+    color:var(--mist-dim);
+    opacity:0.55;
+  }
+  .cadence span:last-child{ color:#F3EFE4; opacity:1; font-style:normal; font-weight:560; }
+
+  .tihai-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start; }
+  .tihai h2{ font-size:clamp(28px,4vw,42px); color:#F3EFE4; line-height:1.15; max-width:14ch; }
+  .tihai-copy{ margin-top:18px; font-size:16px; color:var(--mist); max-width:42ch; line-height:1.7; }
+
+  form.waitlist{ display:flex; flex-direction:column; gap:18px; }
+  .field label{
+    font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--mist-dim); display:block; margin-bottom:8px;
+  }
+  .field input[type=text], .field input[type=email]{
+    width:100%; background:transparent; border:none; border-bottom:1px solid rgba(201,213,216,0.35);
+    color:#F3EFE4; font-family:var(--font-body); font-size:16px; padding:9px 2px;
+    transition:border-color .2s ease;
+  }
+  .field input::placeholder{ color:rgba(201,213,216,0.4); }
+  .field input:focus{ outline:none; border-color:var(--brass-bright); }
+
+  .radio-row{ display:flex; gap:20px; flex-wrap:wrap; margin-top:4px; }
+  .radio-opt{ display:flex; align-items:center; gap:8px; font-size:14px; color:var(--mist); }
+  .radio-opt input{ accent-color:var(--brass); width:15px; height:15px; }
+
+  .submit-row{ display:flex; align-items:center; gap:18px; margin-top:8px; flex-wrap:wrap; }
+  .btn-brass{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    background:var(--brass); color:var(--night-deep); padding:15px 28px; border-radius:2px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-brass:hover{ background:var(--brass-bright); transform:translateY(-1px); }
+  .form-note{ font-size:12.5px; color:var(--mist-dim); }
+  .form-success{
+    display:none; font-family:var(--font-display); font-size:19px; color:var(--brass-bright); padding-top:8px;
+  }
+  .form-success.show{ display:block; }
+  form.waitlist.hide{ display:none; }
+
+  :focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+
+  @media (max-width:760px){
+    .hero-grid, .alap-grid, .tihai-grid{ grid-template-columns:1fr; }
+    .hero-grid{ gap:40px; }
+    .hero-figures{ flex-direction:row; flex-wrap:wrap; }
+    .hero-figures .fig-row{ flex:1 1 45%; flex-direction:column; gap:4px; }
+    .tihai-grid{ gap:40px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--night-deep); color:var(--mist-dim);
+    padding:36px 0 40px; border-top:var(--edge-dark);
+  }
+  .foot-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .foot-row .brand-mark{ color:var(--mist); font-size:16px; }
+  .foot-links{ display:flex; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; }
+  .foot-links a{ opacity:0.8; transition:opacity .2s ease; }
+  .foot-links a:hover{ opacity:1; }
+  .foot-fine{ font-family:var(--font-mono); font-size:11px; margin-top:22px; opacity:0.6; }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <a href="#top" class="brand-mark">Antara<span class="dot">·</span>Experiences</a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#why">Alap</a>
+    <a href="#journey">Antara</a>
+    <a href="#details">Vistar</a>
+    <a href="#join" class="nav-cta">Register interest</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO :: STHAYI ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow on-light"><span class="term">Sthayi</span><span class="gloss">— the ground you begin from</span></p>
+        <h1>Your practice already knows the mountains are next.</h1>
+        <p class="hero-sub">Antara Experiences is a guided immersion from the ghats of Rishikesh to the high Garhwal Himalaya — daily yoga practice, then a multi-day trek above the treeline. Built for practitioners who came for stillness and are ready to climb.</p>
+        <div class="hero-actions">
+          <a href="#join" class="btn-primary">Register your interest</a>
+          <a href="#why" class="link-quiet">Read how it's built ↓</a>
+        </div>
+      </div>
+      <div class="hero-figures">
+        <div class="fig-row"><span>Rishikesh, Uttarakhand</span><span class="fig-num">Origin</span></div>
+        <div class="fig-row"><span>Yoga, then trek</span><span class="fig-num">Two Registers</span></div>
+        <div class="fig-row"><span>Opening soon</span><span class="fig-num">First Batch</span></div>
+      </div>
+    </div>
+
+    <svg class="contour" id="contourSvg" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="contourFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#BD8A3B" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#BD8A3B" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="fill-under" d="M0,220 L0,190 L90,168 L180,178 L280,120 L360,142 L450,84 L540,104 L630,52 L730,74 L830,30 L940,52 L1040,16 L1200,30 L1200,220 Z"/>
+      <path d="M0,190 L90,168 L180,178 L280,120 L360,142 L450,84 L540,104 L630,52 L730,74 L830,30 L940,52 L1040,16 L1200,30"/>
+      <circle cx="830" cy="30" r="3.5" style="animation-delay:2.1s"/>
+      <circle cx="1040" cy="16" r="3.5" style="animation-delay:2.3s"/>
+    </svg>
+  </section>
+
+  <!-- ===== ALAP ===== -->
+  <section class="alap" id="why">
+    <div class="wrap alap-grid">
+      <div class="reveal">
+        <p class="eyebrow on-light"><span class="term">Alap</span><span class="gloss">— no fixed tempo yet</span></p>
+        <h2>Why yoga and altitude belong in the same sentence</h2>
+      </div>
+      <div class="alap-body reveal">
+        <p>Rishikesh sits where the Ganga leaves the mountains and becomes a plain — which is also roughly where most yoga practice stops. You learn to lengthen the breath on a mat, in a room, at sea-level ease. <strong>Altitude asks the same question the practice does, just with less patience.</strong></p>
+        <p>Above 3,000 metres, the air thins enough that breath stops being automatic. You notice it the way you're taught to notice it in pranayama — except now a ridge line is waiting on the other side of noticing. That's the shape of this journey: a week finding your breath on the ghats, then days spent proving it on a trail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANTARA (the rise) ===== -->
+  <section class="antara" id="journey">
+    <div class="wrap">
+      <p class="eyebrow on-dark reveal"><span class="term">Antara</span><span class="gloss">— the rise, the part that names the whole piece</span></p>
+      <h2 class="reveal">The Yoga + Himalayan Trek Immersion</h2>
+      <p class="antara-lede reveal">The first half is grounded in Rishikesh: morning asana and pranayama on the river, meditation, and a slower rhythm to the day than most guests arrive with. The second half leaves the ashram behind for a guided ascent into the Garhwal Himalaya — camping above the treeline, walking mornings, and a summit push timed to weather rather than a spreadsheet.</p>
+      <p class="antara-lede reveal">No trekking experience is assumed. The practice in week one is, in part, training for week two.</p>
+
+      <div class="stat-strip reveal">
+        <div class="stat"><div class="num">10</div><div class="label">Days, door to door</div></div>
+        <div class="stat"><div class="num">2</div><div class="label">Landscapes, one journey</div></div>
+        <div class="stat"><div class="num">~3,800m</div><div class="label">Peak altitude</div></div>
+        <div class="stat"><div class="num">8–12</div><div class="label">Guests per batch</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISTAR ===== -->
+  <section class="vistar" id="details">
+    <div class="wrap">
+      <div class="vistar-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Vistar</span><span class="gloss">— the elaboration</span></p>
+          <h2>What's held for you</h2>
+        </div>
+        <p>Everything logistical is arranged so the only real decision left is whether to keep walking. This is what's included on both halves of the journey.</p>
+      </div>
+
+      <div class="held-grid reveal">
+        <div class="held-card">
+          <p class="mark">01</p>
+          <h3>Daily practice</h3>
+          <p>Asana and pranayama each morning on the riverside, led by Rishikesh-trained instructors.</p>
+        </div>
+        <div class="held-card">
+          <p class="mark">02</p>
+          <h3>Sattvic meals</h3>
+          <p>Vegetarian food cooked in the ashram tradition — the same meals that fuel the trek days.</p>
+        </div>
+        <div class="held-card">
+          <p class="mark">03</p>
+          <h3>Guided ascent</h3>
+          <p>Certified local trek leaders, all permits and mountain logistics handled before you land.</p>
+        </div>
+        <div class="held-card">
+          <p class="mark">04</p>
+          <h3>Small batches</h3>
+          <p>Capped at 8–12 guests, so the ridge line stays quiet and the practice stays personal.</p>
+        </div>
+        <div class="held-card">
+          <p class="mark">05</p>
+          <h3>Two landscapes</h3>
+          <p>Days on the Ganga in Rishikesh, then days above the treeline — one itinerary, two registers.</p>
+        </div>
+        <div class="held-card">
+          <p class="mark">06</p>
+          <h3>Everything carried</h3>
+          <p>Camping gear, permits, and support staff are arranged — you carry a daypack, not a checklist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIHAI :: close + form ===== -->
+  <section class="tihai" id="join">
+    <div class="wrap">
+      <div class="cadence reveal">
+        <span>Ready when the road is.</span>
+        <span>Ready when the road is.</span>
+        <span>Ready — register below.</span>
+      </div>
+
+      <div class="tihai-grid">
+        <div class="reveal">
+          <p class="eyebrow on-dark"><span class="term">Tihai</span><span class="gloss">— the phrase, said three times, that lands</span></p>
+          <h2>Be first to know when the dates open</h2>
+          <p class="tihai-copy">We're testing interest before locking a calendar or a price. Leave your details and you'll hear first when a batch is confirmed — no payment, no commitment, just first word.</p>
+        </div>
+
+        <div class="reveal">
+          <form class="waitlist" id="waitlistForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="field">
+              <label for="wl-name">Name</label>
+              <input type="text" id="wl-name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label for="wl-email">Email</label>
+              <input type="email" id="wl-email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div class="field">
+              <label>Which pulls you more?</label>
+              <div class="radio-row">
+                <label class="radio-opt"><input type="radio" name="pull" value="Yoga practice"> The yoga</label>
+                <label class="radio-opt"><input type="radio" name="pull" value="The trek"> The trek</label>
+                <label class="radio-opt"><input type="radio" name="pull" value="Both equally" checked> Both, equally</label>
+              </div>
+            </div>
+            <div class="submit-row">
+              <button type="submit" class="btn-brass">Join the waitlist</button>
+              <span class="form-note">One email when dates are set. Nothing else.</span>
+            </div>
+          </form>
+          <p class="form-success" id="formSuccess">You're on the list. We'll write the moment the dates are set.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <a href="#top" class="brand-mark">Antara Experiences</a>
+      <div class="foot-links">
+        <a href="mailto:hello@antaraexperiences.com">hello@antaraexperiences.com</a>
+        <a href="https://instagram.com/antaraexperiences" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <p class="foot-fine">Rishikesh, Uttarakhand · © <span id="year"></span> Antara Experiences. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('siteNav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Contour fill reveal
+  const contour = document.getElementById('contourSvg');
+  setTimeout(() => contour.classList.add('revealed'), 300);
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Waitlist form — progressive enhancement over the plain Formspree POST
+  const form = document.getElementById('waitlistForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    if (form.action.includes('YOUR_FORM_ID')) return; // not configured yet — let it no-op locally
+    e.preventDefault();
+    const btn = form.querySelector('.btn-brass');
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } });
+      if (res.ok) {
+        form.classList.add('hide');
+        success.classList.add('show');
+      } else {
+        btn.textContent = 'Join the waitlist';
+        alert('Something went wrong — please try again.');
+      }
+    } catch (err) {
+      btn.textContent = 'Join the waitlist';
+      alert('Something went wrong — please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>
