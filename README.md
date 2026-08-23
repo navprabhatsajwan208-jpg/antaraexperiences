@@ -23,6 +23,8 @@ Success metric: waitlist signups per 100 visitors.
 ```
 antara-experiences/
 ├── index.html        # the entire site — HTML, CSS, and JS in one file
+├── robots.txt        # crawler directives + sitemap pointer
+├── sitemap.xml       # XML sitemap with image entries
 ├── assets/           # logo, photography, favicon (currently empty)
 ├── docs/
 │   ├── SETUP.md      # step-by-step: form, analytics, email, deploy
@@ -31,6 +33,36 @@ antara-experiences/
 ├── .gitignore
 └── README.md
 ```
+
+---
+
+## SEO
+
+The page is optimised around the primary query **"yoga retreat Rishikesh"** and
+related long-tail variants.
+
+What's in place:
+
+- **Title + meta description** tuned for length (53 / 159 chars) and intent
+- **Canonical URL**, robots directives, `geo.*` tags for local relevance
+- **Open Graph + Twitter Card** tags with a 2000×1333 preview image
+- **JSON-LD structured data** — an `@graph` containing `Organization`, `WebSite`,
+  `WebPage`, `TouristTrip` (with a 4-stop itinerary), and `FAQPage`
+- **Visible FAQ section** (`#faq`) — the 8 questions mirror the `FAQPage` schema
+  one-for-one, which Google requires for FAQ rich results
+- **Single `<h1>`** with a clean `h1 → h2 → h3` outline
+- **`width`/`height` on every image** to prevent layout shift (CLS), plus
+  `loading="lazy"` below the fold and `fetchpriority="high"` + preload on the hero
+- **`robots.txt` / `sitemap.xml`** with image entries for Google Images
+- **www → apex 301** in `netlify.toml` so ranking signals consolidate on one host
+
+> The domain `antaraexperiences.com` is hard-coded in the canonical tag, Open Graph
+> URLs, JSON-LD `@id`s, `sitemap.xml`, and `robots.txt`. If the domain changes,
+> find-and-replace it across those files.
+
+After deploying, submit the sitemap in
+[Google Search Console](https://search.google.com/search-console) and validate the
+structured data with the [Rich Results Test](https://search.google.com/test/rich-results).
 
 ---
 

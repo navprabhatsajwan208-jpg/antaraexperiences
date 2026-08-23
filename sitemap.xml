@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://antaraexperiences.com/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/rishikesh-town.jpg</image:loc>
+      <image:title>Rishikesh on the banks of the Ganga</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/ganga-aarti.jpg</image:loc>
+      <image:title>Ganga aarti at dusk in Rishikesh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/gallery/yogic-sessions/01.jpg</image:loc>
+      <image:title>Rooftop yoga practice above the Ganga</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/beatles-ashram.jpg</image:loc>
+      <image:title>The Beatles Ashram, Rishikesh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/kunjapuri-temple.jpg</image:loc>
+      <image:title>Kunjapuri Temple, Uttarakhand</image:title>
+    </image:image>
+  </url>
+</urlset>

@@ -3,16 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antara Experiences — Yoga & Spiritual Immersion, Rishikesh</title>
-<meta name="description" content="A guided yoga and spiritual immersion on the ghats of Rishikesh — daily asana and pranayama, sound healing, sacred ceremony, and sattvic living by the Ganga. Small groups, opening soon.">
 
-<meta property="og:title" content="Antara Experiences — Yoga & Spiritual Immersion, Rishikesh">
-<meta property="og:description" content="Daily practice on the Ganga, deepened by sound healing and ceremony. Register your interest before dates open.">
+<title>Yoga Retreat in Rishikesh, India | Antara Experiences</title>
+<meta name="description" content="Small-group yoga and spiritual retreats on the ghats of Rishikesh, India — daily asana and pranayama, meditation, sound healing, Ganga aarti and sattvic meals.">
+<link rel="canonical" href="https://antaraexperiences.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Antara Experiences">
+<meta name="theme-color" content="#0A0F17">
+
+<meta name="geo.region" content="IN-UT">
+<meta name="geo.placename" content="Rishikesh, Uttarakhand, India">
+<meta name="geo.position" content="30.0869;78.2676">
+<meta name="ICBM" content="30.0869, 78.2676">
+
+<meta property="og:site_name" content="Antara Experiences">
+<meta property="og:title" content="Yoga Retreat in Rishikesh, India | Antara Experiences">
+<meta property="og:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, sound healing, ceremony and sattvic living by the Ganga.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://antaraexperiences.com/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://antaraexperiences.com/assets/rishikesh-town.jpg">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1333">
+<meta property="og:image:alt" content="The temples of Rishikesh on the banks of the Ganga with the Himalayan foothills behind">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yoga Retreat in Rishikesh, India | Antara Experiences">
+<meta name="twitter:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, ceremony and sattvic living by the Ganga.">
+<meta name="twitter:image" content="https://antaraexperiences.com/assets/rishikesh-town.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;0,9..144,650;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/rishikesh-town.jpg" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,440;0,9..144,560;0,9..144,650;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -31,6 +54,10 @@
     --font-display:'Fraunces', serif;
     --font-body:   'Work Sans', sans-serif;
     --font-mono:   'JetBrains Mono', monospace;
+    --font-script: 'Caveat', cursive;
+
+    --evergreen:      #35573F;
+    --evergreen-deep: #203A28;
 
     --edge: 1px solid rgba(21,32,43,0.14);
     --edge-dark: 1px solid rgba(201,213,216,0.18);
@@ -104,18 +131,19 @@
   /* ---------- NAV ---------- */
   header.site-nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    padding:18px clamp(20px,5vw,56px);
-    display:flex; align-items:center; justify-content:space-between;
+    padding:20px clamp(20px,5vw,56px);
+    display:flex; align-items:center; gap:22px;
     background:transparent;
     transition:background 0.35s ease, box-shadow 0.35s ease, border-color .35s ease, padding .35s ease;
     border-bottom:1px solid transparent;
+    color:var(--evergreen-deep);
   }
   header.site-nav.scrolled{
-    background:rgba(232,226,210,0.86);
+    background:rgba(232,226,210,0.9);
     backdrop-filter:blur(14px) saturate(1.2);
     -webkit-backdrop-filter:blur(14px) saturate(1.2);
     border-bottom:var(--edge);
-    padding-top:13px; padding-bottom:13px;
+    padding-top:14px; padding-bottom:14px;
     box-shadow:0 12px 30px -20px rgba(21,32,43,0.35);
   }
   .brand-mark{
@@ -126,58 +154,197 @@
     display:flex; align-items:center; gap:9px;
   }
   .brand-mark .glyph{ width:18px; height:18px; color:var(--brass); flex-shrink:0; }
-  .nav-links{ display:flex; gap:34px; align-items:center; }
+
+  .nav-toggle{
+    display:flex; flex-direction:column; gap:5px; width:22px; flex-shrink:0;
+    color:var(--evergreen-deep);
+  }
+  .nav-toggle span{ height:1.5px; width:100%; background:currentColor; transition:transform .3s ease, opacity .3s ease; }
+  .nav-toggle.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2){ opacity:0; }
+  .nav-toggle.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+
+  .nav-links{ flex:1; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+  .nl-group{ display:flex; align-items:center; gap:28px; }
+  .nl-group.left{ justify-self:start; }
+  .nl-group.right{ justify-self:end; }
   .nav-links a{
-    font-family:var(--font-mono);
+    font-family:var(--font-body);
     font-size:12.5px;
-    letter-spacing:0.06em;
+    font-weight:500;
+    letter-spacing:0.07em;
     text-transform:uppercase;
-    opacity:0.8;
+    opacity:0.82;
     position:relative;
+    white-space:nowrap;
     transition:opacity 0.2s ease;
   }
-  .nav-links a:not(.nav-cta)::after{
-    content:''; position:absolute; left:0; right:100%; bottom:-4px; height:1px;
-    background:var(--brass); transition:right .25s ease;
-  }
-  .nav-links a:not(.nav-cta):hover::after{ right:0; }
   .nav-links a:hover{ opacity:1; }
-  .nav-cta{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    padding:9px 18px;
-    border:1px solid var(--ink);
-    border-radius:2px;
-    transition:background 0.2s ease, color 0.2s ease, border-color .2s ease, transform .2s ease;
+  .nav-links a.active{ opacity:1; color:var(--brass-deep); }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:50%; bottom:-9px; width:4px; height:4px; border-radius:50%;
+    background:var(--brass); transform:translateX(-50%);
   }
-  .nav-cta:hover{ background:var(--ink); color:var(--paper); transform:translateY(-1px); }
-  .nav-toggle{ display:none; }
+  .nav-logo{
+    justify-self:center; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    width:56px; height:56px; color:var(--evergreen); opacity:1;
+  }
+  .nav-logo::before{ content:''; position:absolute; inset:0; border:1px solid rgba(53,87,63,0.3); border-radius:50%; }
+  .nav-logo svg{ width:28px; height:28px; }
+  .nav-cta{
+    font-family:var(--font-body);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    opacity:1;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px;
+    border:1px solid var(--evergreen-deep);
+    border-radius:999px;
+    transition:background 0.2s ease, color 0.2s ease, transform .2s ease;
+  }
+  .nav-cta:hover{ background:var(--evergreen-deep); color:var(--paper); transform:translateY(-1px); }
 
-  @media (max-width:760px){
+  @media (max-width:1040px){
+    .nl-group{ gap:16px; }
+    .nav-links a{ font-size:11px; }
+  }
+  @media (max-width:900px){
     .nav-links{
       position:fixed; inset:0 0 0 auto; width:78%; max-width:320px;
-      background:var(--ink); color:var(--paper);
-      flex-direction:column; align-items:flex-start; justify-content:center;
+      background:var(--evergreen-deep); color:var(--paper);
+      display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
       gap:26px; padding:40px;
       transform:translateX(100%);
       transition:transform 0.4s cubic-bezier(.65,0,.35,1);
     }
     .nav-links.open{ transform:translateX(0); }
-    .nav-links a{ font-size:14px; opacity:0.9; }
-    .nav-cta{ border-color:var(--paper); }
-    .nav-toggle{
-      display:flex; flex-direction:column; gap:5px; z-index:60; position:relative;
-      width:26px;
-    }
-    .nav-toggle span{ height:1.5px; width:100%; background:var(--ink); transition:transform .3s ease, opacity .3s ease; }
-    .nav-toggle.open span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2){ opacity:0; }
-    .nav-toggle.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
+    .nl-group{ flex-direction:column; align-items:flex-start; gap:22px; }
+    .nav-links a{ font-size:14px; opacity:0.9; color:var(--paper); }
+    .nav-links a.active{ color:var(--brass-bright); }
+    .nav-logo{ display:none; }
+    .nav-cta{ border-color:var(--paper); color:var(--paper); }
+    .nav-cta:hover{ background:var(--paper); color:var(--evergreen-deep); }
   }
 
   /* ---------- HERO :: STHAYI ---------- */
+  .hero-v2{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .hero-v2-photo{ position:absolute; inset:0; z-index:0; }
+  .hero-v2-photo img{
+    width:100%; height:100%; object-fit:cover; object-position:center 42%;
+    display:block; will-change:transform; transform:scale(1.05);
+  }
+  .hero-v2-scrim{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(300px 200px at 8% 94%, rgba(45,32,16,0.3), transparent 72%),
+      radial-gradient(340px 220px at 92% 90%, rgba(45,32,16,0.3), transparent 72%),
+      linear-gradient(180deg,
+        rgba(255,247,230,0.55) 0%,
+        rgba(255,248,232,0.76) 22%,
+        rgba(255,248,232,0.8) 42%,
+        rgba(255,246,228,0.6) 58%,
+        rgba(255,241,218,0.32) 72%,
+        rgba(255,238,212,0.14) 88%,
+        rgba(255,238,212,0.05) 100%);
+  }
+  .hero-v2-mandala{
+    position:absolute; top:-8%; right:-10%; width:min(640px,60vw); height:min(640px,60vw);
+    z-index:1; opacity:0.28; color:#FBF6E9; pointer-events:none;
+  }
+
+  .site-nav-spacer{ height:96px; flex-shrink:0; position:relative; z-index:3; }
+
+  .hero-v2-center{
+    position:relative; z-index:3; flex:1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:20px 24px 90px; will-change:transform;
+  }
+  .hero-v2-center > *{ max-width:100%; }
+  .hero-v2-sub{ flex-wrap:wrap; row-gap:10px; }
+  .hero-v2-keywords{ max-width:420px; }
+  .hero-v2-title{ display:block; font-weight:420; }
+  .hero-v2-wordmark{
+    display:block; width:fit-content; margin:0 auto;
+    position:relative;
+    font-family:var(--font-display); font-weight:420;
+    font-size:clamp(58px,11vw,124px);
+    line-height:0.95;
+    color:var(--evergreen-deep);
+    text-shadow:0 2px 26px rgba(255,248,232,0.85), 0 1px 4px rgba(255,248,232,0.9);
+  }
+  .hero-v2-leaf{ position:absolute; width:26px; height:26px; color:var(--evergreen); top:2%; right:4%; transform:rotate(25deg); }
+  .hero-v2-sub{ margin-top:2px; display:flex; align-items:center; justify-content:center; gap:16px; }
+  .hero-v2-sub .ln{ width:clamp(30px,7vw,90px); height:1px; background:var(--brass-deep); opacity:0.7; }
+  .hero-v2-sub .dm{ color:var(--brass-deep); font-size:11px; opacity:0.9; }
+  .hero-v2-sub .dm::before{ content:'\25C6'; }
+  .hero-v2-sub .tx{
+    font-family:var(--font-body); font-weight:600;
+    font-size:clamp(15px,2.2vw,21px); letter-spacing:0.36em;
+    color:var(--brass-deep); text-transform:uppercase;
+    text-shadow:0 1px 16px rgba(255,248,232,0.9), 0 1px 3px rgba(255,248,232,0.95);
+  }
+  .hero-v2-tagline{
+    margin-top:22px; font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:clamp(17px,2vw,22px); color:var(--evergreen-deep);
+    text-shadow:0 1px 16px rgba(255,248,232,0.9), 0 1px 3px rgba(255,248,232,0.95);
+  }
+  .hero-v2-divider{ margin-top:22px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .hero-v2-divider svg{ width:24px; height:24px; color:var(--evergreen); filter:drop-shadow(0 1px 10px rgba(255,248,232,0.9)); }
+  .hero-v2-divider .ln{ width:110px; height:1px; background:rgba(32,58,40,0.5); }
+  .hero-v2-keywords{
+    margin-top:16px; font-family:var(--font-body); font-weight:600;
+    font-size:clamp(11.5px,1.6vw,13.5px); letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--evergreen-deep);
+    text-shadow:0 1px 4px rgba(255,248,232,1), 0 1px 10px rgba(255,248,232,1), 0 0 22px rgba(255,248,232,0.9);
+  }
+  .hero-v2-keywords .sep{ margin:0 10px; color:var(--brass-deep); opacity:0.8; }
+
+  .hero-v2-corner{ position:absolute; z-index:3; }
+  .hero-v2-corner.left{ left:clamp(20px,5vw,56px); bottom:36px; color:#F3EFE4; }
+  .hero-v2-corner.left .loc{
+    font-family:var(--font-body); font-size:13px; font-weight:600;
+    letter-spacing:0.1em; text-transform:uppercase; line-height:1.5;
+  }
+  .hero-v2-corner.left .rule{ width:34px; height:1px; background:rgba(243,239,228,0.6); margin-top:8px; }
+  .hero-v2-corner.right{
+    right:clamp(20px,5vw,56px); bottom:32px; color:#F3EFE4; text-align:right;
+    display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+  }
+  .hero-v2-corner.right .script{
+    font-family:var(--font-script); font-weight:600;
+    font-size:clamp(22px,3vw,30px); line-height:1.15; transform:rotate(-2deg);
+  }
+  .hero-v2-corner.right svg{ width:20px; height:20px; color:#F3EFE4; opacity:0.85; }
+  .hero-v2-corner.right .caps{
+    font-family:var(--font-body); font-size:10.5px; font-weight:500;
+    letter-spacing:0.16em; text-transform:uppercase; opacity:0.85;
+  }
+
+  .hero-v2-scrollcue{
+    position:absolute; left:50%; bottom:16px; transform:translateX(-50%); z-index:3;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase;
+    color:#F3EFE4; opacity:0.75;
+  }
+  .hero-v2-scrollcue .line{ width:1px; height:22px; background:linear-gradient(180deg, rgba(243,239,228,0.9), transparent); animation:cueMove 1.8s ease-in-out infinite; }
+  @keyframes cueMove{ 0%{ transform:scaleY(0.4); transform-origin:top; opacity:0.4; } 50%{ transform:scaleY(1); opacity:1; } 100%{ transform:scaleY(0.4); transform-origin:bottom; opacity:0.4; } }
+
+  @media (max-width:640px){
+    .hero-v2-corner.left{ bottom:auto; top:120px; }
+    .hero-v2-corner.right{ bottom:20px; }
+    .hero-v2-scrollcue{ display:none; }
+  }
+
+  /* ---------- HERO (classic) ---------- */
   .hero{
     position:relative;
     min-height:100svh;
@@ -211,7 +378,7 @@
 
   .hero-grid{
     display:grid;
-    grid-template-columns:1.15fr 0.85fr;
+    grid-template-columns:1fr;
     gap:48px;
     align-items:end;
     position:relative;
@@ -219,7 +386,7 @@
     padding-bottom:64px;
     will-change:transform;
   }
-  .hero h1{
+  .hero h2{
     font-size:clamp(36px,5.8vw,68px);
     line-height:1.05;
     margin-top:18px;
@@ -233,44 +400,6 @@
     max-width:44ch;
     line-height:1.65;
   }
-  .hero-actions{ display:flex; align-items:center; gap:26px; margin-top:36px; flex-wrap:wrap; }
-  .btn-primary{
-    font-family:var(--font-mono);
-    font-size:13px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    background:var(--paper);
-    color:var(--ink);
-    padding:15px 26px;
-    border-radius:2px;
-    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
-    display:inline-block;
-  }
-  .btn-primary:hover{ background:var(--brass-bright); transform:translateY(-2px); box-shadow:0 14px 26px -14px rgba(10,15,23,0.45); }
-  .link-quiet{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    letter-spacing:0.04em;
-    color:var(--mist);
-    border-bottom:1px solid rgba(201,213,216,0.35);
-    padding-bottom:2px;
-    transition:border-color .2s ease, color .2s ease;
-  }
-  .link-quiet:hover{ color:#F3EFE4; border-color:#F3EFE4; }
-  .hero-figures{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    color:var(--ink-soft);
-    display:flex; flex-direction:column; gap:14px;
-    padding:20px 22px;
-    background:rgba(232,226,210,0.82);
-    backdrop-filter:blur(10px);
-    border:var(--edge);
-    border-radius:3px;
-  }
-  .hero-figures .fig-row{ display:flex; justify-content:space-between; gap:14px; border-bottom:var(--edge); padding-bottom:10px; }
-  .hero-figures .fig-row:last-child{ border-bottom:none; padding-bottom:0; }
-  .hero-figures .fig-num{ color:var(--ink); font-weight:500; }
 
   .scroll-cue{
     position:relative; z-index:3; margin:0 auto; padding-bottom:26px;
@@ -279,13 +408,16 @@
     color:var(--ink-soft); opacity:0.7;
   }
   .scroll-cue .line{ width:1px; height:26px; background:linear-gradient(180deg, var(--brass), transparent); animation:cueMove 1.8s ease-in-out infinite; }
-  @keyframes cueMove{ 0%{ transform:scaleY(0.4); transform-origin:top; opacity:0.4; } 50%{ transform:scaleY(1); opacity:1; } 100%{ transform:scaleY(0.4); transform-origin:bottom; opacity:0.4; } }
+
+  @media (max-width:760px){
+    .hero-grid{ gap:40px; }
+  }
 
   /* ---------- section divider waves ---------- */
   .divider{ position:relative; line-height:0; z-index:2; }
   .divider svg{ width:100%; height:56px; display:block; }
   .divider.to-dark{ background:var(--paper); }
-  .divider.to-light{ background:var(--paper); }
+  .divider.to-light{ background:var(--paper-deep); }
 
   /* ---------- ALAP ---------- */
   .alap{ padding:80px 0 96px; background:var(--paper); position:relative; }
@@ -294,15 +426,9 @@
     aspect-ratio:21/9; box-shadow:0 30px 60px -34px rgba(21,32,43,0.4);
   }
   .alap-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 60%; display:block; }
-  .alap-photo .cap{
-    position:absolute; left:18px; bottom:16px;
-    font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color:#F3EFE4; background:rgba(10,15,23,0.5); backdrop-filter:blur(6px);
-    padding:6px 12px; border-radius:2px;
-  }
   @media (max-width:700px){ .alap-photo{ aspect-ratio:4/3; } }
   .alap-grid{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; }
-  .alap h2{ font-size:clamp(26px,3.4vw,38px); line-height:1.15; margin-top:16px; max-width:12ch; }
+  .alap h2{ font-size:clamp(26px,3.4vw,38px); line-height:1.15; max-width:12ch; }
   .alap-body p{ font-size:16.5px; color:var(--ink-soft); max-width:56ch; line-height:1.75; }
   .alap-body p + p{ margin-top:18px; }
   .alap-body strong{ color:var(--ink); font-weight:600; }
@@ -343,7 +469,7 @@
   .stat-strip{
     margin-top:64px;
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     border-top:var(--edge-dark);
   }
   .stat{ padding:26px 22px 0; border-right:var(--edge-dark); position:relative; }
@@ -353,10 +479,10 @@
   .stat .num{ font-family:var(--font-mono); font-size:clamp(22px,2.6vw,30px); color:var(--brass-bright); }
   .stat .label{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--mist-dim); margin-top:8px; }
 
-  @media (max-width:760px){
-    .stat-strip{ grid-template-columns:repeat(2,1fr); }
-    .stat:nth-child(2){ border-right:none; }
-    .stat:nth-child(3), .stat:nth-child(4){ border-top:var(--edge-dark); padding-top:22px; margin-top:22px; }
+  @media (max-width:560px){
+    .stat-strip{ grid-template-columns:1fr; }
+    .stat{ border-right:none; }
+    .stat:not(:first-child){ border-top:var(--edge-dark); padding-top:22px; margin-top:22px; }
   }
 
   /* ---------- VISTAR ---------- */
@@ -367,7 +493,7 @@
 
   .held-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:1px;
     background:rgba(21,32,43,0.14);
     border:var(--edge);
@@ -376,21 +502,68 @@
   .held-card{
     background:var(--paper);
     padding:0 0 32px;
-    transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+    transition:background .25s ease, transform .2s ease, box-shadow .3s ease;
     transform-style:preserve-3d;
     position:relative;
+    will-change:transform;
   }
-  .held-card:hover{ background:var(--paper-deep); box-shadow:0 22px 40px -28px rgba(21,32,43,0.4); z-index:2; }
-  .held-swatch{ height:76px; width:100%; position:relative; overflow:hidden; }
+  .held-card::after{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(220px 200px at var(--hx,50%) var(--hy,50%), rgba(189,138,59,0.16), transparent 72%);
+    opacity:0; transition:opacity .35s ease;
+  }
+  .held-card:hover::after{ opacity:1; }
+  .held-card:hover{ background:var(--paper-deep); box-shadow:0 30px 54px -30px rgba(21,32,43,0.45); z-index:2; }
+  .held-swatch{
+    height:240px; width:100%; position:relative; overflow:hidden; z-index:1;
+    background:radial-gradient(ellipse at 50% 40%, rgba(189,138,59,0.14), var(--paper-deep) 75%);
+  }
   .held-swatch svg{ width:100%; height:100%; display:block; }
-  .held-card .body{ padding:22px 26px 0; }
-  .held-card .mark{ font-family:var(--font-mono); font-size:12px; color:var(--brass-deep); }
+  .held-swatch img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .7s cubic-bezier(.2,.6,.2,1);
+  }
+  .held-card:hover .held-swatch img{ transform:scale(1.07); }
+  .held-card .body{ padding:22px 26px 0; position:relative; z-index:1; }
+  .held-card .mark{
+    font-family:var(--font-mono); font-size:12px; color:var(--brass-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .held-card .mark::before{ content:''; width:16px; height:1px; background:var(--brass-deep); opacity:0.6; }
   .held-card h3{ font-size:18px; font-weight:560; margin-top:14px; }
   .held-card p{ font-size:14.5px; color:var(--ink-soft); margin-top:10px; line-height:1.6; }
+
+  .held-card.wide{ grid-column:1 / -1; display:grid; grid-template-columns:320px 1fr; padding:0; }
+  .held-card.wide .held-swatch{ width:100%; height:100%; }
+  .held-card.wide .body{ padding:26px 30px; display:flex; flex-direction:column; justify-content:center; }
 
   @media (max-width:760px){
     .vistar-head{ grid-template-columns:1fr; gap:20px; }
     .held-grid{ grid-template-columns:1fr; }
+    .held-card.wide{ grid-template-columns:1fr; }
+    .held-card.wide .held-swatch{ height:190px; }
+    .held-card.wide .body{ padding:22px 26px 32px; }
+  }
+
+  /* ---------- KATHA (outing stories) ---------- */
+  .katha{ padding:100px 0 108px; background:var(--paper-deep); }
+  .katha-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
+  .katha-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:14ch; }
+  .katha-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+
+  .katha-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(21,32,43,0.14); border:var(--edge); }
+  .katha-card{ background:var(--paper); padding:0 0 36px; }
+  .katha-visual{ height:220px; width:100%; position:relative; overflow:hidden; background:radial-gradient(ellipse at 50% 35%, rgba(189,138,59,0.14), var(--paper-deep) 75%); }
+  .katha-visual svg{ width:100%; height:100%; display:block; }
+  .katha-visual img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .katha-card .body{ padding:28px 30px 0; }
+  .katha-tag{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
+  .katha-card h3{ font-size:22px; font-weight:560; margin-top:14px; }
+  .katha-card p{ font-size:15px; color:var(--ink-soft); margin-top:12px; line-height:1.7; }
+
+  @media (max-width:760px){
+    .katha-head{ grid-template-columns:1fr; gap:20px; }
+    .katha-grid{ grid-template-columns:1fr; }
   }
 
   /* ---------- JHALAK (gallery) ---------- */
@@ -406,6 +579,9 @@
     position:relative; overflow:hidden; border-radius:3px; background:var(--paper-deep);
     aspect-ratio:4/5;
   }
+  .jhalak-item.wide{ grid-column:1 / -1; }
+  .jhalak-item.wide .frame{ aspect-ratio:21/8; }
+  @media (max-width:700px){ .jhalak-item.wide .frame{ aspect-ratio:4/3; } }
   .jhalak-item .frame img{
     width:100%; height:100%; object-fit:cover; display:block;
     transition:transform .7s cubic-bezier(.2,.6,.2,1);
@@ -419,6 +595,67 @@
   .jhalak-item .desc{
     margin-top:6px; font-size:15.5px; color:var(--ink-soft); line-height:1.6; max-width:38ch;
   }
+
+  /* ---------- SANCHARI (full photo collection) ---------- */
+  .sanchari{ padding:12px 0 108px; background:var(--paper); }
+  .sanchari-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:44px; }
+  .sanchari-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:14ch; }
+  .sanchari-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+
+  .sanchari-grid{ columns:4 220px; column-gap:12px; }
+  @media (max-width:900px){ .sanchari-grid{ columns:3 180px; } }
+  @media (max-width:560px){ .sanchari-grid{ columns:2 140px; } }
+
+  .sanchari-item{
+    position:relative; break-inside:avoid; margin:0 0 12px; overflow:hidden;
+    border-radius:3px; background:var(--paper-deep);
+  }
+  .sanchari-item img{
+    width:100%; display:block; transition:transform .6s cubic-bezier(.2,.6,.2,1);
+  }
+  .sanchari-item:hover img{ transform:scale(1.05); }
+  .sanchari-item .cat{
+    position:absolute; left:8px; bottom:8px;
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:#F3EFE4; background:rgba(10,15,23,0.55); backdrop-filter:blur(6px);
+    padding:4px 8px; border-radius:2px;
+    opacity:0; transform:translateY(4px); transition:opacity .25s ease, transform .25s ease;
+  }
+  .sanchari-item:hover .cat{ opacity:1; transform:translateY(0); }
+  .sanchari-more{
+    margin-top:36px; text-align:center;
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- PRASHNA (FAQ) ---------- */
+  .prashna{ padding:96px 0 104px; background:var(--paper-deep); }
+  .prashna-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:48px; }
+  .prashna-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
+  .prashna-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+  @media (max-width:760px){ .prashna-head{ grid-template-columns:1fr; gap:20px; } }
+
+  .faq-list{ border-top:var(--edge); }
+  .faq-item{ border-bottom:var(--edge); }
+  .faq-item summary{
+    list-style:none; cursor:pointer;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:24px;
+    padding:22px 0;
+    font-family:var(--font-display); font-size:clamp(17px,2vw,20px); font-weight:560;
+    color:var(--ink); transition:color .2s ease;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary:hover{ color:var(--brass-deep); }
+  .faq-item summary .sign{ flex-shrink:0; width:20px; height:20px; position:relative; margin-top:5px; color:var(--brass-deep); }
+  .faq-item summary .sign::before,
+  .faq-item summary .sign::after{
+    content:''; position:absolute; left:50%; top:50%; background:currentColor;
+    transform:translate(-50%,-50%); transition:transform .3s ease, opacity .3s ease;
+  }
+  .faq-item summary .sign::before{ width:14px; height:1.5px; }
+  .faq-item summary .sign::after{ width:1.5px; height:14px; }
+  .faq-item[open] summary .sign::after{ transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+  .faq-item .answer{ padding:0 44px 26px 0; font-size:16px; color:var(--ink-soft); line-height:1.75; max-width:64ch; }
 
   /* ---------- TIHAI (close + form) ---------- */
   .tihai{
@@ -483,10 +720,7 @@
   :focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
 
   @media (max-width:760px){
-    .hero-grid, .alap-grid, .tihai-grid{ grid-template-columns:1fr; }
-    .hero-grid{ gap:40px; }
-    .hero-figures{ flex-direction:row; flex-wrap:wrap; }
-    .hero-figures .fig-row{ flex:1 1 45%; flex-direction:column; gap:4px; }
+    .alap-grid, .tihai-grid{ grid-template-columns:1fr; }
     .tihai-grid{ gap:40px; }
   }
 
@@ -509,6 +743,83 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{ opacity:1; transform:none; transition:none; }
   }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:200;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; padding:40px;
+    background:rgba(10,12,10,0.92);
+    opacity:0; visibility:hidden;
+    transition:opacity .3s ease, visibility 0s linear .3s;
+  }
+  .lightbox.open{ opacity:1; visibility:visible; transition:opacity .3s ease, visibility 0s linear 0s; }
+  .lightbox img{
+    max-width:min(90vw, 1400px); max-height:78vh; width:auto; height:auto;
+    display:block; object-fit:contain;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.6);
+    transform:scale(0.97); transition:transform .3s ease;
+  }
+  .lightbox.open img{ transform:scale(1); }
+  .lightbox-cap{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.04em;
+    color:var(--mist); opacity:0.85; text-align:center; max-width:80vw;
+  }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.08); color:#F3EFE4;
+    font-size:16px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .lightbox-close:hover{ background:rgba(255,255,255,0.18); transform:rotate(90deg); }
+  .jhalak-item .frame img, .sanchari-item img{ cursor:zoom-in; }
+
+  /* ---------- FLOATING CONTACT ---------- */
+  .float-contact{
+    position:fixed; right:20px; bottom:20px; z-index:150;
+    display:flex; align-items:center; gap:10px;
+  }
+  .float-contact .contact-pill{
+    font-family:var(--font-body); font-size:13px; font-weight:600;
+    letter-spacing:0.02em; color:var(--ink);
+    background:var(--paper); border:var(--edge);
+    padding:12px 20px; border-radius:999px;
+    box-shadow:0 12px 28px -14px rgba(21,32,43,0.4);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .float-contact .contact-pill:hover{ transform:translateY(-2px); box-shadow:0 16px 32px -14px rgba(21,32,43,0.5); background:var(--paper-deep); }
+  .float-contact .whatsapp-btn{
+    width:48px; height:48px; border-radius:50%;
+    background:#25D366; color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px -12px rgba(37,211,102,0.6);
+    transition:transform .2s ease, box-shadow .2s ease;
+    flex-shrink:0;
+  }
+  .float-contact .whatsapp-btn:hover{ transform:translateY(-2px) scale(1.05); box-shadow:0 16px 32px -12px rgba(37,211,102,0.7); }
+  .float-contact .whatsapp-btn svg{ width:26px; height:26px; }
+  .float-contact .insta-btn{
+    width:48px; height:48px; border-radius:50%;
+    background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px -12px rgba(214,36,159,0.55);
+    transition:transform .2s ease, box-shadow .2s ease;
+    flex-shrink:0;
+  }
+  .float-contact .insta-btn:hover{ transform:translateY(-2px) scale(1.05); box-shadow:0 16px 32px -12px rgba(214,36,159,0.65); }
+  .float-contact .insta-btn svg{ width:24px; height:24px; }
+
+  @media (max-width:560px){
+    .float-contact{ right:14px; bottom:14px; gap:8px; }
+    .float-contact .contact-pill{ padding:10px 16px; font-size:12.5px; }
+    .float-contact .whatsapp-btn, .float-contact .insta-btn{ width:44px; height:44px; }
+    .float-contact .whatsapp-btn svg{ width:23px; height:23px; }
+    .float-contact .insta-btn svg{ width:21px; height:21px; }
+  }
 </style>
 </head>
 <body>
@@ -517,28 +828,110 @@
 <div class="progress" id="progressBar"></div>
 
 <header class="site-nav" id="siteNav">
-  <a href="#top" class="brand-mark">
-    <svg class="glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 18L8.5 7L12.5 13.5L15 10L22 18H2Z" fill="currentColor"/></svg>
-    Antara<span style="color:var(--brass);">·</span>Experiences
-  </a>
-  <nav class="nav-links" id="navLinks">
-    <a href="#why">Alap</a>
-    <a href="#journey">Antara</a>
-    <a href="#details">Vistar</a>
-    <a href="#glimpse">Jhalak</a>
-    <a href="#join" class="nav-cta">Register interest</a>
-  </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+  <nav class="nav-links" id="navLinks">
+    <div class="nl-group left">
+      <a href="#top" class="active">Home</a>
+      <a href="#details">Experiences</a>
+      <a href="#journey">Retreats</a>
+    </div>
+    <a href="#top" class="nav-logo" aria-label="Antara Experiences — home">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path transform="translate(24,44) rotate(-60)" d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+        <path transform="translate(24,44) rotate(-30)" d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+        <path transform="translate(24,44) rotate(0)"   d="M0,0 C-6,-19 -6,-34 0,-44 C6,-34 6,-19 0,0 Z" fill="currentColor"/>
+        <path transform="translate(24,44) rotate(30)"  d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+        <path transform="translate(24,44) rotate(60)"  d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+      </svg>
+    </a>
+    <div class="nl-group right">
+      <a href="#why">About Us</a>
+      <a href="#journal">Journal</a>
+      <a href="#join">Contact Us</a>
+      <a href="#join" class="nav-cta">Enquire Now →</a>
+    </div>
+  </nav>
 </header>
 
 <main id="top">
 
   <!-- ===== HERO :: STHAYI ===== -->
+  <section class="hero-v2">
+    <div class="hero-v2-photo" aria-hidden="true">
+      <img src="assets/rishikesh-town.jpg" width="2000" height="1333" alt="The temples of Rishikesh on the banks of the Ganga, with rafts on the river and the Himalayan foothills behind" fetchpriority="high">
+    </div>
+    <div class="hero-v2-scrim" aria-hidden="true"></div>
+    <svg class="hero-v2-mandala" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+      <circle cx="300" cy="300" r="260" stroke="currentColor" stroke-width="1" stroke-dasharray="2 10" opacity="0.5"/>
+      <circle cx="300" cy="300" r="205" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+      <circle cx="300" cy="300" r="150" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      <path transform="rotate(0 300 300)"   d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(45 300 300)"  d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(90 300 300)"  d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(135 300 300)" d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(180 300 300)" d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(225 300 300)" d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(270 300 300)" d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <path transform="rotate(315 300 300)" d="M300,300 C270,258 270,196 300,138 C330,196 330,258 300,300 Z" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+      <circle cx="300" cy="300" r="8" fill="currentColor" opacity="0.6"/>
+    </svg>
+
+    <div class="site-nav-spacer" aria-hidden="true"></div>
+
+    <div class="hero-v2-center reveal in">
+      <h1 class="hero-v2-title">
+        <span class="hero-v2-wordmark">
+          Antara
+          <svg class="hero-v2-leaf" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M4,28 C4,14 14,4 28,4 C28,18 18,28 4,28 Z" fill="currentColor" opacity="0.9"/>
+            <path d="M6,26 C12,20 18,14 26,6" stroke="var(--paper)" stroke-width="1.4" fill="none"/>
+          </svg>
+        </span>
+        <span class="hero-v2-sub">
+          <span class="ln" aria-hidden="true"></span><span class="dm" aria-hidden="true"></span>
+          <span class="tx">Experiences</span>
+          <span class="dm" aria-hidden="true"></span><span class="ln" aria-hidden="true"></span>
+        </span>
+      </h1>
+      <p class="hero-v2-tagline">Soulful Journeys. Timeless Memories.</p>
+      <div class="hero-v2-divider">
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path transform="translate(24,44) rotate(-60)" d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+          <path transform="translate(24,44) rotate(-30)" d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+          <path transform="translate(24,44) rotate(0)"   d="M0,0 C-6,-19 -6,-34 0,-44 C6,-34 6,-19 0,0 Z" fill="currentColor"/>
+          <path transform="translate(24,44) rotate(30)"  d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+          <path transform="translate(24,44) rotate(60)"  d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+        </svg>
+        <span class="ln"></span>
+      </div>
+      <p class="hero-v2-keywords">YOGA<span class="sep">•</span>WELLNESS<span class="sep">•</span>CULTURE<span class="sep">•</span>NATURE<span class="sep">•</span>SPIRITUALITY</p>
+    </div>
+
+    <div class="hero-v2-corner left reveal in" style="--d:120ms">
+      <p class="loc">Uttarakhand<br>India</p>
+      <div class="rule"></div>
+    </div>
+    <div class="hero-v2-corner right reveal in" style="--d:160ms">
+      <p class="script">More than a trip<br>A deeper experience.</p>
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path transform="translate(24,44) rotate(-60)" d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+        <path transform="translate(24,44) rotate(-30)" d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+        <path transform="translate(24,44) rotate(0)"   d="M0,0 C-6,-19 -6,-34 0,-44 C6,-34 6,-19 0,0 Z" fill="currentColor"/>
+        <path transform="translate(24,44) rotate(30)"  d="M0,0 C-6,-17 -6,-31 0,-40 C6,-31 6,-17 0,0 Z" fill="currentColor" opacity="0.7"/>
+        <path transform="translate(24,44) rotate(60)"  d="M0,0 C-6,-15 -6,-28 0,-36 C6,-28 6,-15 0,0 Z" fill="currentColor" opacity="0.5"/>
+      </svg>
+      <p class="caps">People | Places | Purpose</p>
+    </div>
+
+    <div class="hero-v2-scrollcue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- ===== HERO (classic) ===== -->
   <section class="hero">
     <div class="hero-photo" aria-hidden="true">
-      <img src="assets/hero.jpg" alt="" fetchpriority="high">
+      <img src="assets/hero.jpg" width="2200" height="1016" alt="" fetchpriority="high">
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-sun" aria-hidden="true"></div>
@@ -546,17 +939,8 @@
     <div class="wrap hero-grid">
       <div class="reveal in">
         <p class="eyebrow on-dark"><span class="term">Sthayi</span><span class="gloss">— the ground you begin from</span></p>
-        <h1>Your practice already knows there's more beneath the surface.</h1>
-        <p class="hero-sub">Antara Experiences is a guided yoga and spiritual immersion on the ghats of Rishikesh — daily asana and pranayama, sound healing, sacred ceremony, and sattvic living by the Ganga. Built for practitioners who came for a class and are ready for a practice.</p>
-        <div class="hero-actions">
-          <a href="#join" class="btn-primary">Register your interest</a>
-          <a href="#why" class="link-quiet">Read how it's built ↓</a>
-        </div>
-      </div>
-      <div class="hero-figures reveal in" style="--d:120ms">
-        <div class="fig-row"><span>Rishikesh, Uttarakhand</span><span class="fig-num">Origin</span></div>
-        <div class="fig-row"><span>Practice & ceremony</span><span class="fig-num">Two Registers</span></div>
-        <div class="fig-row"><span>Opening soon</span><span class="fig-num">First Batch</span></div>
+        <h2>Your practice already knows there's more beneath the surface.</h2>
+        <p class="hero-sub">Antara Experiences is a guided yoga and spiritual immersion on the ghats of Rishikesh, Uttarakhand — daily asana and pranayama, meditation, sound healing, sacred ceremony, and sattvic living by the Ganga. Built for practitioners who came for a class and are ready for a practice.</p>
       </div>
     </div>
 
@@ -567,18 +951,16 @@
   <section class="alap" id="why">
     <div class="wrap">
       <div class="alap-photo reveal">
-        <img src="assets/rishikesh-town.jpg" alt="The temples of Rishikesh on the banks of the Ganga, with rafts on the river and the Himalayan foothills behind" loading="lazy" decoding="async">
-        <span class="cap">Rishikesh, on the Ganga</span>
+        <img src="assets/ganga-aarti.jpg" width="2000" height="1333" alt="Priests performing the Ganga aarti at dusk, tiered flame lamps lit and smoke rising over the river" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="wrap alap-grid">
       <div class="reveal">
-        <p class="eyebrow on-light"><span class="term">Alap</span><span class="gloss">— no fixed tempo yet</span></p>
         <h2>Why Rishikesh, and why more than asana</h2>
       </div>
       <div class="alap-body reveal" style="--d:100ms">
         <p>Rishikesh has been a seat of practice for longer than yoga has been a wellness word. The ghats where you'll sit each morning are the same stretch of river people have come to for centuries — <strong>the postures were never separate from the spiritual work underneath them.</strong></p>
-        <p>A studio class can teach you the shapes. It rarely has room for the rest — the chanting, the fire ceremony, the stretch of stillness that pranayama is actually pointing toward. That's the gap this immersion is built to close: ten days where the physical practice and the spiritual one are taught as one thing, not two.</p>
+        <p>A studio class can teach you the shapes. It rarely has room for the rest — the chanting, the fire ceremony, the stretch of stillness that pranayama is actually pointing toward. That's the gap this immersion is built to close: the physical practice and the spiritual one, taught as one thing, not two.</p>
       </div>
     </div>
   </section>
@@ -590,17 +972,16 @@
   <!-- ===== ANTARA (the rise) ===== -->
   <section class="antara" id="journey">
     <div class="antara-photo" aria-hidden="true">
-      <img src="assets/antara-bg.jpg" alt="" loading="lazy" decoding="async">
+      <img src="assets/antara-bg.jpg" width="2200" height="1016" alt="" loading="lazy" decoding="async">
     </div>
     <div class="antara-scrim" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow on-dark reveal"><span class="term">Antara</span><span class="gloss">— the rise, the part that names the whole piece</span></p>
       <h2 class="reveal" style="--d:60ms">The Yoga & Spiritual Immersion</h2>
       <p class="antara-lede reveal" style="--d:120ms">Mornings open on the river: asana and pranayama as the ghats wake up, then a slower rhythm to the day than most guests arrive with. Afternoons hold meditation, sound healing, and time simply spent doing less. Evenings gather for the Ganga aarti, the fire and bells rolling out over the water.</p>
-      <p class="antara-lede reveal" style="--d:170ms">Nothing here rushes toward a summit. The rise is inward — from a practice you perform to one you inhabit, over ten days by the river.</p>
+      <p class="antara-lede reveal" style="--d:170ms">Nothing here rushes toward a summit. The rise is inward — from a practice you perform to one you inhabit, by the river.</p>
 
       <div class="stat-strip reveal" style="--d:220ms">
-        <div class="stat"><div class="num" data-value="10" data-suffix="">0</div><div class="label">Days, door to door</div></div>
         <div class="stat"><div class="num" data-value="2" data-suffix="×">0</div><div class="label">Practice sessions daily</div></div>
         <div class="stat"><div class="num" data-value="5" data-suffix="">0</div><div class="label">Ceremonies & rituals</div></div>
         <div class="stat"><div class="num" data-value="8" data-suffix="–12">0</div><div class="label">Guests per batch</div></div>
@@ -616,12 +997,12 @@
           <p class="eyebrow on-light"><span class="term">Vistar</span><span class="gloss">— the elaboration</span></p>
           <h2>What's held for you</h2>
         </div>
-        <p>Everything logistical is arranged so the only real decision left is how deep to go. This is what's included across the ten days.</p>
+        <p>Everything logistical is arranged so the only real decision left is how deep to go. This is what's included, however long you stay.</p>
       </div>
 
       <div class="held-grid">
         <div class="held-card reveal" style="--d:0ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="60" cy="38" r="10" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.4"/><circle cx="60" cy="38" r="22" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.24"/><circle cx="60" cy="38" r="34" fill="none" stroke="var(--brass)" stroke-width="2" opacity="0.13"/></svg></div>
+          <div class="held-swatch"><img src="assets/gallery/yogic-sessions/01.jpg" width="1800" height="832" alt="Group yoga practice on a rooftop terrace above the Ganga at dusk" loading="lazy" decoding="async"></div>
           <div class="body">
             <p class="mark">01</p>
             <h3>Daily practice</h3>
@@ -629,7 +1010,7 @@
           </div>
         </div>
         <div class="held-card reveal" style="--d:60ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M0,20 C 80,50 120,10 200,36 C 240,48 270,30 300,40 L300,76 L0,76 Z" fill="var(--mist-dim)" opacity="0.32"/></svg></div>
+          <div class="held-swatch"><img src="assets/sattvic-thali.jpg" width="452" height="678" alt="A sattvic thali with dosa and a variety of small vegetarian dishes" loading="lazy" decoding="async"></div>
           <div class="body">
             <p class="mark">02</p>
             <h3>Sattvic meals</h3>
@@ -637,7 +1018,7 @@
           </div>
         </div>
         <div class="held-card reveal" style="--d:120ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M150,20 C160,32 160,44 150,50 C140,44 140,32 150,20 Z" fill="var(--brass)" opacity="0.34"/><path d="M90,30 C97,39 97,48 90,53 C83,48 83,39 90,30 Z" fill="var(--ink)" opacity="0.16"/><path d="M210,30 C217,39 217,48 210,53 C203,48 203,39 210,30 Z" fill="var(--ink)" opacity="0.16"/></svg></div>
+          <div class="held-swatch"><img src="assets/gallery/sound-healing/01.jpg" width="832" height="1800" alt="A marigold Om rangoli lit with candles ahead of a ceremony" loading="lazy" decoding="async"></div>
           <div class="body">
             <p class="mark">03</p>
             <h3>Ceremony & ritual</h3>
@@ -645,29 +1026,57 @@
           </div>
         </div>
         <div class="held-card reveal" style="--d:0ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="60" cy="38" r="16" fill="var(--brass)" opacity="0.25"/><circle cx="140" cy="38" r="16" fill="var(--brass)" opacity="0.25"/><circle cx="220" cy="38" r="16" fill="var(--brass)" opacity="0.25"/></svg></div>
+          <div class="held-swatch"><img src="assets/gallery/outings/11.jpg" width="832" height="1800" alt="The group at the base of a waterfall on an outing day" loading="lazy" decoding="async"></div>
           <div class="body">
             <p class="mark">04</p>
-            <h3>Small batches</h3>
-            <p>Capped at 8–12 guests, so the circle stays quiet and the practice stays personal.</p>
+            <h3>Outings</h3>
+            <p>Half-day trips to the Beatles Ashram and Patna waterfall — the excursions that round out the immersion.</p>
           </div>
         </div>
-        <div class="held-card reveal" style="--d:60ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><path d="M0,50 C 60,30 100,60 160,36 C 210,16 260,42 300,26" fill="none" stroke="var(--mist-dim)" stroke-width="2" opacity="0.38"/><path d="M0,62 C 60,46 100,66 170,50 C 220,38 260,56 300,44" fill="none" stroke="var(--brass)" stroke-width="1.5" opacity="0.26"/></svg></div>
+        <div class="held-card wide reveal" style="--d:60ms">
+          <div class="held-swatch"><img src="assets/gallery/outings/03.jpg" width="1800" height="832" alt="The group watching the sun set together over the Rishikesh valley" loading="lazy" decoding="async"></div>
           <div class="body">
             <p class="mark">05</p>
-            <h3>River & temple days</h3>
-            <p>Time on the ghats, at ashrams, and at temples nearby — the outings that round out the practice.</p>
+            <h3>Fun sessions</h3>
+            <p>Dance, games, storytelling, and conversations that run long after dinner.</p>
           </div>
         </div>
-        <div class="held-card reveal" style="--d:120ms">
-          <div class="held-swatch"><svg viewBox="0 0 300 76" preserveAspectRatio="none"><rect width="300" height="76" fill="var(--paper-deep)"/><circle cx="150" cy="38" r="5" fill="var(--brass)" opacity="0.4"/><circle cx="130" cy="30" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="170" cy="30" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="130" cy="48" r="4" fill="var(--ink)" opacity="0.18"/><circle cx="170" cy="48" r="4" fill="var(--ink)" opacity="0.18"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KATHA :: outing stories ===== -->
+  <section class="katha" id="journal">
+    <div class="wrap">
+      <div class="katha-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Katha</span><span class="gloss">— the stories along the way</span></p>
+          <h2>Two stops worth knowing before you go</h2>
+        </div>
+        <p>The outings aren't filler — each one carries its own history. A little context on two of the places the group visits.</p>
+      </div>
+
+      <div class="katha-grid">
+        <article class="katha-card reveal" style="--d:0ms">
+          <div class="katha-visual">
+            <img src="assets/beatles-ashram.jpg" width="679" height="451" alt="A painted meditation dome at the Beatles Ashram, overlooking the forested hills" loading="lazy" decoding="async">
+          </div>
           <div class="body">
-            <p class="mark">06</p>
-            <h3>Everything arranged</h3>
-            <p>Transport, ceremony materials, and support are handled — you show up, and practice.</p>
+            <p class="katha-tag">Outings · half-day trip</p>
+            <h3>The Beatles Ashram</h3>
+            <p>In 1968, the Beatles came to Rishikesh to study meditation under Maharishi Mahesh Yogi and ended up writing much of what became the White Album. The ashram — officially Chaurasi Kutia — sits inside Rajaji National Park, its old meditation huts and lecture halls now half-reclaimed by the forest and covered in murals left by visitors over the years. Less a monument than a quiet, overgrown reminder of why people have been coming here to sit still for a long time.</p>
           </div>
-        </div>
+        </article>
+        <article class="katha-card reveal" style="--d:60ms">
+          <div class="katha-visual">
+            <img src="assets/kunjapuri-temple.jpg" width="516" height="387" alt="Kunjapuri Temple, its red-and-white spire set against the sky" loading="lazy" decoding="async">
+          </div>
+          <div class="body">
+            <p class="katha-tag">Outings · sunrise visit</p>
+            <h3>Kunjapuri Temple</h3>
+            <p>A Shakti temple set on a ridge above the Ganga valley, roughly forty minutes from Rishikesh. Groups leave before dawn to reach it for sunrise, when the Himalayan range shows along the horizon and the town below is still asleep. A steep, quiet climb rewarded with one of the widest views in the region — a different register of stillness than the riverside practice, and one of the outings held for every batch.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -685,25 +1094,164 @@
 
       <div class="jhalak-grid">
         <figure class="jhalak-item reveal" style="--d:0ms">
-          <div class="frame"><img src="assets/gallery/yogic-sessions/01.jpg" alt="A group practising yoga at dusk on a rooftop terrace above the Ganga in Rishikesh" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="assets/gallery/yogic-sessions/02.jpg" width="1800" height="832" alt="A group stretching at sunrise on a sandy riverbank of the Ganga in Rishikesh" loading="lazy" decoding="async"></div>
           <span class="cat">Yogic sessions</span>
           <p class="desc">Asana and pranayama on the ghats, morning and evening.</p>
         </figure>
         <figure class="jhalak-item reveal" style="--d:60ms">
-          <div class="frame"><img src="assets/gallery/sound-healing/01.jpg" alt="A participant seated in front of a marigold Om rangoli lit with candles, ahead of a sound healing session" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="assets/gallery/sound-healing/03.jpg" width="832" height="1800" alt="A sound healer moving between singing bowls as the group lies in savasana around a marigold Om rangoli" loading="lazy" decoding="async"></div>
           <span class="cat">Sound healing</span>
           <p class="desc">A marigold Om, candlelight, and a bowl held until the room goes quiet.</p>
         </figure>
         <figure class="jhalak-item reveal" style="--d:0ms">
-          <div class="frame"><img src="assets/gallery/outings/05.jpg" alt="The group at a temple in Rishikesh, lit up at dusk" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="assets/gallery/outings/13.jpg" width="1800" height="832" alt="The group at a temple in Rishikesh in the early morning light" loading="lazy" decoding="async"></div>
           <span class="cat">Temple visit</span>
           <p class="desc">Evenings at the temples along the river, aarti light on the water.</p>
         </figure>
         <figure class="jhalak-item reveal" style="--d:60ms">
-          <div class="frame"><img src="assets/gallery/traditional-marriage/02.jpg" alt="A traditional welcome ceremony held for the group" loading="lazy" decoding="async"></div>
+          <div class="frame"><img src="assets/gallery/traditional-marriage/02.jpg" width="1800" height="832" alt="A traditional welcome ceremony held for the group" loading="lazy" decoding="async"></div>
           <span class="cat">Traditional culture</span>
-          <p class="desc">A ceremony held for every new group, before the ten days begin.</p>
+          <p class="desc">A ceremony held for every new group, before the immersion begins.</p>
         </figure>
+        <figure class="jhalak-item wide reveal" style="--d:0ms">
+          <div class="frame"><img src="assets/gallery/rafting/01.jpg" width="1800" height="832" alt="The group after a white-water rafting run on the Ganga, paddles raised, gorge walls on both sides" loading="lazy" decoding="async"></div>
+          <span class="cat">Rafting</span>
+          <p class="desc">An off-day on the river, gorge walls rising on both sides.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SANCHARI :: full photo collection ===== -->
+  <section class="sanchari" id="album">
+    <div class="wrap">
+      <div class="sanchari-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Sanchari</span><span class="gloss">— the wandering, before the close</span></p>
+          <h2>The fuller album</h2>
+        </div>
+        <p>Jhalak was a glimpse. This is the rest of the roll — added to after every batch that comes through.</p>
+      </div>
+
+      <div class="sanchari-grid">
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/outings/01.jpg" width="832" height="1800" alt="The group in front of a Shiva mural in Rishikesh" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/outings/04.jpg" width="1800" height="832" alt="The group visiting a temple during the day" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:80ms">
+          <img src="assets/gallery/outings/05.jpg" width="832" height="1800" alt="The group at a temple in Rishikesh at dusk" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/outings/07.jpg" width="832" height="1800" alt="Two guests on the sandy riverbank of the Ganga" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/outings/08.jpg" width="1800" height="832" alt="Guests beneath a waterfall on an outing day" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:80ms">
+          <img src="assets/gallery/outings/10.jpg" width="832" height="1800" alt="The group celebrating at the base of a waterfall" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/outings/12.jpg" width="832" height="1800" alt="A larger group gathered at the waterfall" loading="lazy" decoding="async">
+          <span class="cat">Outings</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/sound-healing/02.jpg" width="832" height="1800" alt="The group lying in savasana during a sound healing session" loading="lazy" decoding="async">
+          <span class="cat">Sound healing</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:80ms">
+          <img src="assets/gallery/traditional-marriage/01.jpg" width="1013" height="1800" alt="A blessing during the traditional welcome ceremony" loading="lazy" decoding="async">
+          <span class="cat">Traditional culture</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/traditional-marriage/03.jpg" width="1800" height="832" alt="The group gathered for the traditional welcome ceremony" loading="lazy" decoding="async">
+          <span class="cat">Traditional culture</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/retreat-1/02.jpg" width="1350" height="1800" alt="A guest standing in prayer outside the Tungnath temple, mist rolling down the hillside behind" loading="lazy" decoding="async">
+          <span class="cat">Temple visit</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:80ms">
+          <img src="assets/gallery/retreat-1/03.jpg" width="1350" height="1800" alt="The stone shikhara of Tungnath temple against a misted Himalayan valley" loading="lazy" decoding="async">
+          <span class="cat">Temple visit</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/retreat-1/05.jpg" width="1013" height="1800" alt="The painted facade of Badrinath temple, pilgrims gathered on the steps" loading="lazy" decoding="async">
+          <span class="cat">Temple visit</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/retreat-1/06.jpg" width="1013" height="1800" alt="A white marble shrine set into a gorge wall above rushing water" loading="lazy" decoding="async">
+          <span class="cat">Temple visit</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:80ms">
+          <img src="assets/gallery/retreat-1/04.jpg" width="1350" height="1800" alt="A guest resting on a trail bridge beside a waterfall in the forest" loading="lazy" decoding="async">
+          <span class="cat">On the trail</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:0ms">
+          <img src="assets/gallery/retreat-1/07.jpg" width="1013" height="1800" alt="Tents pitched in a green valley under an evening sky" loading="lazy" decoding="async">
+          <span class="cat">On the trail</span>
+        </figure>
+        <figure class="sanchari-item reveal" style="--d:40ms">
+          <img src="assets/gallery/retreat-1/01.jpg" width="1488" height="1800" alt="The group sitting out together on the snow as the sun rises over the ridge" loading="lazy" decoding="async">
+          <span class="cat">On the trail</span>
+        </figure>
+      </div>
+
+      <p class="sanchari-more">More from every batch, added as they come.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRASHNA :: FAQ ===== -->
+  <section class="prashna" id="faq">
+    <div class="wrap">
+      <div class="prashna-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Prashna</span><span class="gloss">— the questions that come first</span></p>
+          <h2>What people ask before they come</h2>
+        </div>
+        <p>The practical answers, in one place. Anything not covered here, write to us and we'll answer properly.</p>
+      </div>
+
+      <div class="faq-list reveal" style="--d:80ms">
+        <details class="faq-item">
+          <summary>Where is the retreat held?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">On the ghats of Rishikesh in Uttarakhand, northern India — the stretch of the Ganga at the foot of the Himalayas. Practice runs riverside and on rooftop terraces above the water, with outings into the surrounding valley.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does a typical day look like?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Two practice sessions daily. Mornings open with asana and pranayama by the river as the ghats wake up. Afternoons hold meditation, sound healing, and unstructured time. Evenings gather for the Ganga aarti, the fire and bells rolling out over the water.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need previous yoga experience?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">No prior retreat experience is needed. Sessions are led by Rishikesh-trained instructors and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How many people are in each group?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Eight to twelve guests per batch. Groups are kept small deliberately, so ceremonies are held for the group rather than performed for an audience.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What food is served?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Sattvic vegetarian meals cooked in the ashram tradition — the same food that carries you through the day's practice. Vegetarian throughout.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is included besides yoga?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Meditation and sound healing, a traditional welcome ceremony, the Ganga aarti, half-day outings to the Beatles Ashram and Patna waterfall, a sunrise visit to Kunjapuri Temple, white-water rafting on the Ganga, and evening sessions of dance, games and storytelling.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When are the dates, and what does it cost?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Dates and pricing aren't published yet — we're confirming interest before locking a calendar. Join the waitlist and you'll hear first when a batch is confirmed. No payment, no commitment.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I get to Rishikesh?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">The nearest airport is Dehradun (Jolly Grant), roughly 20 km away. The nearest major railhead is Haridwar, roughly 25 km away. Rishikesh is about 240 km north of Delhi by road.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -716,8 +1264,6 @@
   <section class="tihai" id="join">
     <div class="wrap">
       <div class="cadence reveal">
-        <span>Ready when the road is.</span>
-        <span>Ready when the road is.</span>
         <span>Ready — register below.</span>
       </div>
 
@@ -729,22 +1275,22 @@
         </div>
 
         <div class="reveal" style="--d:100ms">
-          <form class="waitlist" id="waitlistForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form class="waitlist" id="waitlistForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeSrFMMwHmnmA-2JBEGED3X-co4UQYwTBOBRdB5CMMbI-yaYQ/formResponse" method="POST" target="hiddenFrame">
             <div class="field">
               <label for="wl-name">Name</label>
-              <input type="text" id="wl-name" name="name" placeholder="Your full name" required>
+              <input type="text" id="wl-name" name="entry.647015149" placeholder="Your full name" required>
             </div>
             <div class="field">
               <label for="wl-email">Email</label>
-              <input type="email" id="wl-email" name="email" placeholder="you@email.com" required>
+              <input type="email" id="wl-email" name="entry.1387807551" placeholder="you@email.com" required>
             </div>
             <div class="field">
-              <label>Which pulls you more?</label>
-              <div class="radio-row">
-                <label class="radio-opt"><input type="radio" name="pull" value="The daily practice"> The daily practice</label>
-                <label class="radio-opt"><input type="radio" name="pull" value="Ceremony & sound healing"> Ceremony & sound healing</label>
-                <label class="radio-opt"><input type="radio" name="pull" value="Both equally" checked> Both, equally</label>
-              </div>
+              <label for="wl-pull">What pulled you here?</label>
+              <input type="text" id="wl-pull" name="entry.741294142" placeholder="e.g. the daily practice, the ceremony...">
+            </div>
+            <div class="field">
+              <label for="wl-mobile">Mobile no.</label>
+              <input type="tel" id="wl-mobile" name="entry.1767666133" placeholder="Your phone number">
             </div>
             <div class="submit-row">
               <button type="submit" class="btn-brass">Join the waitlist</button>
@@ -752,6 +1298,7 @@
             </div>
           </form>
           <p class="form-success" id="formSuccess">You're on the list. We'll write the moment the dates are set.</p>
+          <iframe name="hiddenFrame" id="hiddenFrame" style="position:absolute; width:1px; height:1px; left:-9999px; opacity:0; border:0;" title="form submission target"></iframe>
         </div>
       </div>
     </div>
@@ -767,13 +1314,29 @@
         Antara Experiences
       </a>
       <div class="foot-links">
-        <a href="mailto:hello@antaraexperiences.com">hello@antaraexperiences.com</a>
-        <a href="https://instagram.com/antaraexperiences" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:navprabhatsajwan208@gmail.com">navprabhatsajwan208@gmail.com</a>
+        <a href="https://instagram.com/antaraexperiences" target="_blank" rel="noopener">Antara Experiences</a>
       </div>
     </div>
     <p class="foot-fine">Rishikesh, Uttarakhand · © <span id="year"></span> Antara Experiences. All rights reserved.</p>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <p class="lightbox-cap" id="lightboxCap"></p>
+</div>
+
+<div class="float-contact">
+  <a href="#join" class="contact-pill">Contact us</a>
+  <a href="https://wa.me/918126065714" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.14-.2.3-.75.94-.92 1.13-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.3-.02-.46.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.08-.15-.65-1.58-.9-2.16-.24-.58-.48-.5-.65-.5-.17-.01-.36-.01-.56-.01-.2 0-.51.07-.78.37-.27.3-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.01.15.2 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/><path d="M20.52 3.48A11.94 11.94 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 0 0 5.63 1.43h.01c6.54 0 11.85-5.3 11.85-11.84 0-3.16-1.23-6.13-3.37-8.43zm-8.48 18.2h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.79.99 1.01-3.7-.24-.38a9.84 9.84 0 0 1-1.51-5.17c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.9a9.8 9.8 0 0 1 2.89 6.98c0 5.44-4.43 9.87-9.87 9.87z"/></svg>
+  </a>
+  <a href="https://instagram.com/antaraexperiences" class="insta-btn" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+</div>
 
 <script>
   // Nav scroll state
@@ -840,18 +1403,25 @@
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Parallax on hero photo + heading, and mouse spotlight on dark sections
+  // Parallax on hero photos + centered wordmark, and mouse spotlight on dark sections
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const heroPhoto = document.querySelector('.hero-photo img');
-  const heroGrid = document.querySelector('.hero-grid');
+  const heroPhoto = document.querySelector('.hero-v2-photo img');
+  const heroCenter = document.querySelector('.hero-v2-center');
+  const classicHeroSection = document.querySelector('.hero');
+  const classicHeroPhoto = document.querySelector('.hero .hero-photo img');
   let ticking = false;
   const onParallaxScroll = () => {
     if (ticking || reduceMotion) return;
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY;
-      if (heroPhoto) heroPhoto.style.transform = `scale(1.06) translateY(${Math.min(y * 0.12, 90)}px)`;
-      if (heroGrid) heroGrid.style.transform = `translateY(${Math.min(y * 0.12, 60)}px)`;
+      if (heroPhoto) heroPhoto.style.transform = `scale(1.05) translateY(${Math.min(y * 0.12, 90)}px)`;
+      if (heroCenter) heroCenter.style.transform = `translateY(${Math.min(y * 0.1, 50)}px)`;
+      if (classicHeroPhoto && classicHeroSection) {
+        const localY = -classicHeroSection.getBoundingClientRect().top;
+        const clamped = Math.max(0, Math.min(localY, 700));
+        classicHeroPhoto.style.transform = `scale(1.06) translateY(${clamped * 0.12}px)`;
+      }
       ticking = false;
     });
   };
@@ -866,40 +1436,259 @@
       });
     });
 
-    // Subtle tilt on held-cards
+    // Tilt + cursor-glow on held-cards
     document.querySelectorAll('.held-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${py * -4}deg) rotateY(${px * 4}deg) translateY(-2px)`;
+        card.style.transform = `perspective(900px) rotateX(${py * -5}deg) rotateY(${px * 5}deg) translateY(-4px) scale(1.015)`;
+        card.style.setProperty('--hx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--hy', ((e.clientY - r.top) / r.height * 100) + '%');
       });
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
   }
 
-  // Waitlist form — progressive enhancement over the plain Formspree POST
+  // Lightbox — open gallery photos at their natural shape
+  (() => {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCap = document.getElementById('lightboxCap');
+    const lightboxClose = document.getElementById('lightboxClose');
+    let lastFocused = null;
+
+    const openLightbox = (img) => {
+      lastFocused = document.activeElement;
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || '';
+      lightboxCap.textContent = img.alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus({ preventScroll: true });
+    };
+
+    document.querySelectorAll('.jhalak-item .frame img, .sanchari-item img').forEach(img => {
+      img.addEventListener('click', () => openLightbox(img));
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+  })();
+
+  // Waitlist form — submits to Google Forms via a hidden iframe (Google Forms has no CORS support, so fetch() can't be used)
   const form = document.getElementById('waitlistForm');
   const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', async (e) => {
-    if (form.action.includes('YOUR_FORM_ID')) return; // not configured yet — let it no-op locally
-    e.preventDefault();
+  const hiddenFrame = document.getElementById('hiddenFrame');
+  let submitted = false;
+  let submitTimeout = null;
+  form.addEventListener('submit', () => {
+    submitted = true;
     const btn = form.querySelector('.btn-brass');
     btn.textContent = 'Sending…';
-    try {
-      const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } });
-      if (res.ok) {
-        form.classList.add('hide');
-        success.classList.add('show');
-      } else {
+    clearTimeout(submitTimeout);
+    submitTimeout = setTimeout(() => {
+      if (submitted) {
         btn.textContent = 'Join the waitlist';
-        alert('Something went wrong — please try again.');
+        alert('That took too long — please check your connection and try again.');
+        submitted = false;
       }
-    } catch (err) {
-      btn.textContent = 'Join the waitlist';
-      alert('Something went wrong — please try again.');
-    }
+    }, 12000);
   });
+  hiddenFrame.addEventListener('load', () => {
+    if (!submitted) return; // ignore the iframe's initial blank load
+    clearTimeout(submitTimeout);
+    submitted = false;
+    form.classList.add('hide');
+    success.classList.add('show');
+  });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://antaraexperiences.com/#organization",
+      "name": "Antara Experiences",
+      "url": "https://antaraexperiences.com/",
+      "email": "navprabhatsajwan208@gmail.com",
+      "telephone": "+91-81260-65714",
+      "description": "Small-group yoga and spiritual immersion retreats on the ghats of Rishikesh, Uttarakhand, India.",
+      "logo": "https://antaraexperiences.com/assets/rishikesh-town.jpg",
+      "image": "https://antaraexperiences.com/assets/rishikesh-town.jpg",
+      "sameAs": ["https://instagram.com/antaraexperiences"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rishikesh",
+        "addressRegion": "Uttarakhand",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Rishikesh, Uttarakhand, India"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://antaraexperiences.com/#website",
+      "url": "https://antaraexperiences.com/",
+      "name": "Antara Experiences",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://antaraexperiences.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://antaraexperiences.com/#webpage",
+      "url": "https://antaraexperiences.com/",
+      "name": "Yoga Retreat in Rishikesh, India | Antara Experiences",
+      "description": "A small-group yoga and spiritual retreat on the ghats of Rishikesh, India — daily asana and pranayama, meditation, sound healing, Ganga aarti, sattvic meals and Himalayan outings.",
+      "isPartOf": { "@id": "https://antaraexperiences.com/#website" },
+      "about": { "@id": "https://antaraexperiences.com/#organization" },
+      "primaryImageOfPage": "https://antaraexperiences.com/assets/rishikesh-town.jpg",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "TouristTrip",
+      "@id": "https://antaraexperiences.com/#retreat",
+      "name": "Yoga & Spiritual Immersion Retreat, Rishikesh",
+      "description": "A guided yoga and spiritual immersion on the ghats of Rishikesh. Two practice sessions daily — asana and pranayama by the river — alongside meditation, sound healing, Ganga aarti, a traditional welcome ceremony, sattvic vegetarian meals, and half-day outings into the surrounding Himalayan valley. Groups of 8 to 12 guests.",
+      "provider": { "@id": "https://antaraexperiences.com/#organization" },
+      "touristType": [
+        "Yoga practitioners",
+        "Wellness travellers",
+        "Spiritual retreat seekers"
+      ],
+      "image": [
+        "https://antaraexperiences.com/assets/gallery/yogic-sessions/01.jpg",
+        "https://antaraexperiences.com/assets/ganga-aarti.jpg",
+        "https://antaraexperiences.com/assets/rishikesh-town.jpg"
+      ],
+      "itinerary": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Ganga ghats, Rishikesh",
+              "description": "Morning asana and pranayama on the riverside, led by Rishikesh-trained instructors."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "The Beatles Ashram (Chaurasi Kutia)",
+              "description": "Half-day trip to the former Maharishi Mahesh Yogi ashram inside Rajaji National Park."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Kunjapuri Temple",
+              "description": "Pre-dawn drive and climb to a Shakti temple above the Ganga valley for sunrise over the Himalayan range."
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "TouristAttraction",
+              "name": "Patna waterfall",
+              "description": "Half-day walk to a waterfall in the forest above Rishikesh."
+            }
+          }
+        ]
+      },
+      "subjectOf": { "@id": "https://antaraexperiences.com/#webpage" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://antaraexperiences.com/#faq",
+      "isPartOf": { "@id": "https://antaraexperiences.com/#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is the retreat held?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the ghats of Rishikesh in Uttarakhand, northern India — the stretch of the Ganga at the foot of the Himalayas. Practice runs riverside and on rooftop terraces above the water, with outings into the surrounding valley."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a typical day look like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two practice sessions daily. Mornings open with asana and pranayama by the river as the ghats wake up. Afternoons hold meditation, sound healing, and unstructured time. Evenings gather for the Ganga aarti, the fire and bells rolling out over the water."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need previous yoga experience?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No prior retreat experience is needed. Sessions are led by Rishikesh-trained instructors and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many people are in each group?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eight to twelve guests per batch. Groups are kept small deliberately so ceremonies are held for the group rather than performed for an audience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What food is served?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sattvic vegetarian meals cooked in the ashram tradition — the same food that carries you through the day's practice. Vegetarian throughout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included besides yoga?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meditation and sound healing, a traditional welcome ceremony, the Ganga aarti, half-day outings to the Beatles Ashram and Patna waterfall, a sunrise visit to Kunjapuri Temple, white-water rafting on the Ganga, and evening sessions of dance, games and storytelling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When are the dates and what does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dates and pricing are not yet published. We are confirming interest before locking a calendar. Join the waitlist and you will hear first when a batch is confirmed — no payment and no commitment required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get to Rishikesh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The nearest airport is Dehradun (Jolly Grant), roughly 20 km away. The nearest major railhead is Haridwar, roughly 25 km away. Rishikesh is about 240 km north of Delhi by road."
+          }
+        }
+      ]
+    }
+  ]
+}
 </script>
 
 </body>
