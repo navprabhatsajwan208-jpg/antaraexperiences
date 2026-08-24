@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Yoga Retreat in Rishikesh, India | Antara Experiences</title>
-<meta name="description" content="Small-group yoga and spiritual retreats on the ghats of Rishikesh, India — daily asana and pranayama, meditation, sound healing, Ganga aarti and sattvic meals.">
+<meta name="description" content="Small-group yoga and spiritual retreats on the ghats of Rishikesh, India — daily asana and pranayama, meditation, sound healing, Ganga aarti and sattvic meals. Himalayan treks also available.">
 <link rel="canonical" href="https://antaraexperiences.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Antara Experiences">
@@ -18,7 +18,7 @@
 
 <meta property="og:site_name" content="Antara Experiences">
 <meta property="og:title" content="Yoga Retreat in Rishikesh, India | Antara Experiences">
-<meta property="og:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, sound healing, ceremony and sattvic living by the Ganga.">
+<meta property="og:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, sound healing, ceremony and sattvic living by the Ganga. Multi-day Himalayan treks also available.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://antaraexperiences.com/">
 <meta property="og:locale" content="en_IN">
@@ -29,7 +29,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yoga Retreat in Rishikesh, India | Antara Experiences">
-<meta name="twitter:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, ceremony and sattvic living by the Ganga.">
+<meta name="twitter:description" content="A small-group yoga and spiritual retreat on the ghats of Rishikesh — daily practice, meditation, ceremony and sattvic living by the Ganga. Himalayan treks also available.">
 <meta name="twitter:image" content="https://antaraexperiences.com/assets/rishikesh-town.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +83,10 @@
   }
 
   img,svg{ display:block; max-width:100%; }
+  /* width/height attrs on <img> reserve layout space; without this the height
+     attribute is used verbatim and any fluid-width image renders stretched.
+     Fixed-ratio containers below override via class selectors. */
+  img{ height:auto; }
   a{ color:inherit; text-decoration:none; }
   ul{ list-style:none; }
   button{ font:inherit; cursor:pointer; border:none; background:none; color:inherit; }
@@ -545,6 +549,40 @@
     .held-card.wide .body{ padding:22px 26px 32px; }
   }
 
+  /* ---------- SHIKHAR (Himalayan treks) ---------- */
+  .shikhar{ padding:100px 0 108px; background:var(--paper); }
+  .shikhar-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:48px; }
+  .shikhar-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
+  .shikhar-head p{ font-size:16.5px; color:var(--ink-soft); max-width:54ch; line-height:1.7; align-self:end; }
+
+  .shikhar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .shikhar-card .frame{ position:relative; overflow:hidden; border-radius:3px; background:var(--paper-deep); aspect-ratio:4/5; }
+  .shikhar-card .frame img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s cubic-bezier(.2,.6,.2,1); }
+  .shikhar-card:hover .frame img{ transform:scale(1.06); }
+  .shikhar-card .cat{ display:block; margin-top:16px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
+  .shikhar-card .desc{ margin-top:6px; font-size:14.5px; color:var(--ink-soft); line-height:1.6; }
+
+  .shikhar-foot{ margin-top:48px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .shikhar-foot p{ font-size:15.5px; color:var(--ink-soft); max-width:46ch; line-height:1.65; }
+  .shikhar-cta{
+    display:inline-flex; align-items:center; gap:8px; flex-shrink:0;
+    font-family:var(--font-body); font-size:12.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase;
+    color:var(--brass-deep); border-bottom:1px solid var(--brass-deep); padding-bottom:3px;
+    transition:opacity .2s ease, gap .2s ease;
+  }
+  .shikhar-cta:hover{ opacity:0.7; gap:12px; }
+
+  @media (max-width:760px){
+    .shikhar-head{ grid-template-columns:1fr; gap:20px; }
+    .shikhar-grid{ grid-template-columns:1fr 1fr; gap:16px; }
+    .shikhar-grid .shikhar-card:first-child{ grid-column:1 / -1; }
+    .shikhar-grid .shikhar-card:first-child .frame{ aspect-ratio:16/9; }
+  }
+  @media (max-width:480px){
+    .shikhar-grid{ grid-template-columns:1fr; }
+    .shikhar-grid .shikhar-card:first-child .frame{ aspect-ratio:4/5; }
+  }
+
   /* ---------- KATHA (outing stories) ---------- */
   .katha{ padding:100px 0 108px; background:var(--paper-deep); }
   .katha-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
@@ -611,7 +649,7 @@
     border-radius:3px; background:var(--paper-deep);
   }
   .sanchari-item img{
-    width:100%; display:block; transition:transform .6s cubic-bezier(.2,.6,.2,1);
+    width:100%; height:auto; display:block; transition:transform .6s cubic-bezier(.2,.6,.2,1);
   }
   .sanchari-item:hover img{ transform:scale(1.05); }
   .sanchari-item .cat{
@@ -836,6 +874,7 @@
       <a href="#top" class="active">Home</a>
       <a href="#details">Experiences</a>
       <a href="#journey">Retreats</a>
+      <a href="#treks">Treks</a>
     </div>
     <a href="#top" class="nav-logo" aria-label="Antara Experiences — home">
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -1045,6 +1084,42 @@
     </div>
   </section>
 
+  <!-- ===== SHIKHAR :: Himalayan treks ===== -->
+  <section class="shikhar" id="treks">
+    <div class="wrap">
+      <div class="shikhar-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Shikhar</span><span class="gloss">— the summit, a second path</span></p>
+          <h2>We also lead treks into the Himalayas</h2>
+        </div>
+        <p>The ghats are where most guests start. Some want to keep climbing — so alongside the Rishikesh immersion, Antara runs multi-day treks into the Garhwal Himalaya, to modest, achievable summits in the 3,000–3,800m range. Same small-batch approach, same instructors who know the terrain, run separately from the yoga week or added on to it.</p>
+      </div>
+
+      <div class="shikhar-grid">
+        <article class="shikhar-card reveal" style="--d:0ms">
+          <div class="frame"><img src="assets/gallery/retreat-1/07.jpg" width="1013" height="1800" alt="Tents pitched in a green Garhwal valley under an evening sky" loading="lazy" decoding="async"></div>
+          <span class="cat">Camp</span>
+          <p class="desc">Nights under canvas, high in a Himalayan meadow.</p>
+        </article>
+        <article class="shikhar-card reveal" style="--d:60ms">
+          <div class="frame"><img src="assets/gallery/retreat-1/03.jpg" width="1350" height="1800" alt="The stone shikhara of Tungnath temple against a misted Himalayan valley" loading="lazy" decoding="async"></div>
+          <span class="cat">On the trail</span>
+          <p class="desc">Tungnath — the highest Shiva temple in the world, wrapped in mist.</p>
+        </article>
+        <article class="shikhar-card reveal" style="--d:120ms">
+          <div class="frame"><img src="assets/gallery/retreat-1/01.jpg" width="1488" height="1800" alt="The group sitting together on the snow as the sun rises over the ridge" loading="lazy" decoding="async"></div>
+          <span class="cat">Summit morning</span>
+          <p class="desc">First light on the ridge, the range catching fire.</p>
+        </article>
+      </div>
+
+      <div class="shikhar-foot reveal" style="--d:160ms">
+        <p>Routes and dates aren't fixed yet — we're confirming interest first, the same way we are for Rishikesh. Say so on the waitlist below and we'll write when a trek batch is close.</p>
+        <a href="#join" class="shikhar-cta" data-prefill="The Himalayan trek">Join the trek waitlist →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== KATHA :: outing stories ===== -->
   <section class="katha" id="journal">
     <div class="wrap">
@@ -1245,6 +1320,10 @@
           <p class="answer">Meditation and sound healing, a traditional welcome ceremony, the Ganga aarti, half-day outings to the Beatles Ashram and Patna waterfall, a sunrise visit to Kunjapuri Temple, white-water rafting on the Ganga, and evening sessions of dance, games and storytelling.</p>
         </details>
         <details class="faq-item">
+          <summary>Do you also run Himalayan treks?<span class="sign" aria-hidden="true"></span></summary>
+          <p class="answer">Yes — alongside the Rishikesh immersion, Antara leads multi-day treks into the Garhwal Himalaya, to modest summits in the 3,000–3,800m range. It can be run on its own or added on to the yoga week. Routes and dates aren't fixed yet; join the waitlist and say so, and we'll write when a trek batch is close.</p>
+        </details>
+        <details class="faq-item">
           <summary>When are the dates, and what does it cost?<span class="sign" aria-hidden="true"></span></summary>
           <p class="answer">Dates and pricing aren't published yet — we're confirming interest before locking a calendar. Join the waitlist and you'll hear first when a batch is confirmed. No payment, no commitment.</p>
         </details>
@@ -1286,7 +1365,7 @@
             </div>
             <div class="field">
               <label for="wl-pull">What pulled you here?</label>
-              <input type="text" id="wl-pull" name="entry.741294142" placeholder="e.g. the daily practice, the ceremony...">
+              <input type="text" id="wl-pull" name="entry.741294142" placeholder="e.g. the daily practice, the ceremony, the Himalayan trek...">
             </div>
             <div class="field">
               <label for="wl-mobile">Mobile no.</label>
@@ -1402,6 +1481,14 @@
 
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // CTAs with data-prefill drop their text into "What pulled you here?" before jumping to the form
+  document.querySelectorAll('[data-prefill]').forEach(cta => {
+    cta.addEventListener('click', () => {
+      const pullField = document.getElementById('wl-pull');
+      if (pullField && !pullField.value) pullField.value = cta.dataset.prefill;
+    });
+  });
 
   // Parallax on hero photos + centered wordmark, and mouse spotlight on dark sections
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1617,6 +1704,24 @@
       "subjectOf": { "@id": "https://antaraexperiences.com/#webpage" }
     },
     {
+      "@type": "TouristTrip",
+      "@id": "https://antaraexperiences.com/#trek",
+      "name": "Himalayan Trek, Garhwal",
+      "description": "Multi-day treks into the Garhwal Himalaya to modest, achievable summits in the 3,000-3,800m range, led by Antara Experiences. Run on their own or added on to the Rishikesh yoga immersion. Routes and dates are not yet fixed.",
+      "provider": { "@id": "https://antaraexperiences.com/#organization" },
+      "touristType": [
+        "Trekkers",
+        "Yoga practitioners",
+        "Wellness travellers"
+      ],
+      "image": [
+        "https://antaraexperiences.com/assets/gallery/retreat-1/07.jpg",
+        "https://antaraexperiences.com/assets/gallery/retreat-1/03.jpg",
+        "https://antaraexperiences.com/assets/gallery/retreat-1/01.jpg"
+      ],
+      "subjectOf": { "@id": "https://antaraexperiences.com/#webpage" }
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://antaraexperiences.com/#faq",
       "isPartOf": { "@id": "https://antaraexperiences.com/#webpage" },
@@ -1667,6 +1772,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Meditation and sound healing, a traditional welcome ceremony, the Ganga aarti, half-day outings to the Beatles Ashram and Patna waterfall, a sunrise visit to Kunjapuri Temple, white-water rafting on the Ganga, and evening sessions of dance, games and storytelling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you also run Himalayan treks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Alongside the Rishikesh immersion, Antara leads multi-day treks into the Garhwal Himalaya to modest summits in the 3,000-3,800m range, run on their own or added on to the yoga week. Routes and dates are not fixed yet; join the waitlist and say so, and we will write when a trek batch is close."
           }
         },
         {

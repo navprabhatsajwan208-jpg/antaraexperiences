@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://antaraexperiences.com/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -25,6 +25,14 @@
     <image:image>
       <image:loc>https://antaraexperiences.com/assets/kunjapuri-temple.jpg</image:loc>
       <image:title>Kunjapuri Temple, Uttarakhand</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/gallery/retreat-1/03.jpg</image:loc>
+      <image:title>Tungnath temple in the Garhwal Himalaya</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/gallery/retreat-1/01.jpg</image:loc>
+      <image:title>Sunrise over a Himalayan ridge on the Antara trek</image:title>
     </image:image>
   </url>
 </urlset>
