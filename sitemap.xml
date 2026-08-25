@@ -7,8 +7,12 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://antaraexperiences.com/assets/rishikesh-town.jpg</image:loc>
-      <image:title>Rishikesh on the banks of the Ganga</image:title>
+      <image:loc>https://antaraexperiences.com/assets/rishikesh-hero-sunset.jpg</image:loc>
+      <image:title>Sunrise over the Ganga at Rishikesh, Laxman Jhula bridge</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://antaraexperiences.com/assets/hero.jpg</image:loc>
+      <image:title>Guests together on the bank of the Ganga at Rishikesh</image:title>
     </image:image>
     <image:image>
       <image:loc>https://antaraexperiences.com/assets/ganga-aarti-priests.jpg</image:loc>
