@@ -558,8 +558,12 @@
   .shikhar-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
   .shikhar-head p{ font-size:16.5px; color:var(--ink-soft); max-width:54ch; line-height:1.7; align-self:end; }
 
-  .shikhar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .shikhar-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
   .shikhar-card .frame{ position:relative; overflow:hidden; border-radius:3px; background:var(--paper-deep); aspect-ratio:4/5; }
+  /* the summit group shot is a wide panorama — a portrait frame would crop
+     most of the group out, so it spans the row in a cinematic ratio */
+  .shikhar-card.wide{ grid-column:1 / -1; }
+  .shikhar-card.wide .frame{ aspect-ratio:21/9; }
   .shikhar-card .frame img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s cubic-bezier(.2,.6,.2,1); }
   .shikhar-card:hover .frame img{ transform:scale(1.06); }
   .shikhar-card .cat{ display:block; margin-top:16px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
@@ -577,13 +581,12 @@
 
   @media (max-width:760px){
     .shikhar-head{ grid-template-columns:1fr; gap:20px; }
-    .shikhar-grid{ grid-template-columns:1fr 1fr; gap:16px; }
-    .shikhar-grid .shikhar-card:first-child{ grid-column:1 / -1; }
-    .shikhar-grid .shikhar-card:first-child .frame{ aspect-ratio:16/9; }
+    .shikhar-grid{ gap:16px; }
+    .shikhar-card.wide .frame{ aspect-ratio:16/9; }
   }
   @media (max-width:480px){
     .shikhar-grid{ grid-template-columns:1fr; }
-    .shikhar-grid .shikhar-card:first-child .frame{ aspect-ratio:4/5; }
+    .shikhar-card.wide .frame{ aspect-ratio:3/2; }
   }
 
   /* ---------- KATHA (outing stories) ---------- */
@@ -1139,8 +1142,8 @@
           <span class="cat">On the trail</span>
           <p class="desc">Tungnath — the highest Shiva temple in the world, wrapped in mist.</p>
         </article>
-        <article class="shikhar-card reveal" style="--d:120ms">
-          <div class="frame"><img src="assets/gallery/retreat-1/01.jpg" width="1488" height="1800" alt="The group sitting together on the snow as the sun rises over the ridge" loading="lazy" decoding="async"></div>
+        <article class="shikhar-card wide reveal" style="--d:120ms">
+          <div class="frame"><img src="assets/gallery/retreat-1/08.jpg" width="1280" height="591" alt="The trekking group gathered on a snowy summit ridge at sunrise, the Himalayan range spread out behind them" loading="lazy" decoding="async"></div>
           <span class="cat">Summit morning</span>
           <p class="desc">First light on the ridge, the range catching fire.</p>
         </article>
