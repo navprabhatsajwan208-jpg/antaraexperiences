@@ -15,7 +15,7 @@ All of these live in the `.stat-strip` block in `index.html`.
 | `10` days, door to door | Actual trip length |
 | `2` landscapes | Fine as-is |
 | `~3,800m` peak altitude | Real summit altitude of the trek you'll run |
-| `8–12` guests per batch | Your actual comfortable group cap |
+| `8–15` guests per batch | Your actual comfortable group cap |
 
 Also check:
 
