@@ -591,6 +591,25 @@
     .shikhar-card.wide .frame{ aspect-ratio:3/2; }
   }
 
+  /* ---------- ACHARYA (the teacher) ---------- */
+  .acharya{ padding:100px 0 108px; background:var(--paper); }
+  .acharya-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
+  .acharya-photo{ position:relative; overflow:hidden; border-radius:4px; aspect-ratio:4/5; box-shadow:0 30px 60px -34px rgba(21,32,43,0.4); }
+  .acharya-photo img{ width:100%; height:100%; object-fit:cover; object-position:38% 30%; display:block; }
+  .acharya h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:14ch; }
+  .acharya-name{ font-family:var(--font-display); font-style:italic; font-weight:500; font-size:19px; color:var(--brass-deep); margin-top:22px; }
+  .acharya-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .acharya-tags span{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em;
+    color:var(--ink-soft); border:var(--edge); border-radius:999px; padding:6px 13px;
+  }
+  .acharya-body p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.75; margin-top:18px; }
+
+  @media (max-width:760px){
+    .acharya-grid{ grid-template-columns:1fr; gap:32px; }
+    .acharya-photo{ aspect-ratio:4/3; max-width:420px; }
+  }
+
   /* ---------- KATHA (outing stories) ---------- */
   .katha{ padding:100px 0 108px; background:var(--paper-deep); }
   .katha-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
@@ -889,6 +908,7 @@
     </a>
     <div class="nl-group right">
       <a href="#why">About Us</a>
+      <a href="#teacher">Teacher</a>
       <a href="#journal">Journal</a>
       <a href="#join">Contact Us</a>
       <a href="#join" class="nav-cta">Enquire Now →</a>
@@ -1047,7 +1067,7 @@
           <div class="body">
             <p class="mark">01</p>
             <h3>Daily practice</h3>
-            <p>Asana and pranayama each morning on the riverside, led by Rishikesh-trained instructors.</p>
+            <p>Asana and pranayama each morning on the riverside, led personally by Pradeep Ramola.</p>
           </div>
         </div>
         <div class="held-card reveal" style="--d:60ms">
@@ -1082,6 +1102,26 @@
             <p>Dance, games, storytelling, and conversations that run long after dinner.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHARYA :: the teacher ===== -->
+  <section class="acharya" id="teacher">
+    <div class="wrap acharya-grid">
+      <div class="acharya-photo reveal">
+        <img src="assets/pradeep-ramola.jpg" width="1600" height="1066" alt="Pradeep Ramola leading a fire ceremony, guests in white gathered around him" loading="lazy" decoding="async">
+      </div>
+      <div class="acharya-body reveal" style="--d:80ms">
+        <p class="eyebrow on-light"><span class="term">Acharya</span><span class="gloss">— the one who teaches by living it</span></p>
+        <h2>The person actually leading your practice</h2>
+        <p class="acharya-name">Pradeep Ramola</p>
+        <div class="acharya-tags">
+          <span>BSc, Yogic Sciences</span>
+          <span>10 years teaching</span>
+          <span>Teacher-training faculty</span>
+        </div>
+        <p>Pradeep holds a BSc in Yogic Sciences and has spent the past ten years teaching — not only guiding practitioners, but training the teachers who go on to lead their own. Long before Antara, he was already working in wellness and tourism, guiding groups through Rishikesh into what he calls its magical, spiritual side. The sessions here are led by him, in person.</p>
       </div>
     </div>
   </section>
@@ -1327,7 +1367,7 @@
         </details>
         <details class="faq-item">
           <summary>Do I need previous yoga experience?<span class="sign" aria-hidden="true"></span></summary>
-          <p class="answer">No prior retreat experience is needed. Sessions are led by Rishikesh-trained instructors and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two.</p>
+          <p class="answer">No prior retreat experience is needed. Sessions are led personally by Pradeep Ramola, and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two.</p>
         </details>
         <details class="faq-item">
           <summary>How many people are in each group?<span class="sign" aria-hidden="true"></span></summary>
@@ -1645,7 +1685,17 @@
       "areaServed": {
         "@type": "Place",
         "name": "Rishikesh, Uttarakhand, India"
-      }
+      },
+      "employee": { "@id": "https://antaraexperiences.com/#pradeep-ramola" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://antaraexperiences.com/#pradeep-ramola",
+      "name": "Pradeep Ramola",
+      "jobTitle": "Yoga Teacher & Teacher-Training Faculty",
+      "description": "Pradeep Ramola holds a BSc in Yogic Sciences and has taught yoga for ten years, including training other teachers on teacher-training courses. He has a long background in wellness and tourism, guiding groups through Rishikesh.",
+      "image": "https://antaraexperiences.com/assets/pradeep-ramola.jpg",
+      "worksFor": { "@id": "https://antaraexperiences.com/#organization" }
     },
     {
       "@type": "WebSite",
@@ -1691,7 +1741,7 @@
             "item": {
               "@type": "TouristAttraction",
               "name": "Ganga ghats, Rishikesh",
-              "description": "Morning asana and pranayama on the riverside, led by Rishikesh-trained instructors."
+              "description": "Morning asana and pranayama on the riverside, led by Pradeep Ramola."
             }
           },
           {
@@ -1769,7 +1819,7 @@
           "name": "Do I need previous yoga experience?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No prior retreat experience is needed. Sessions are led by Rishikesh-trained instructors and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two."
+            "text": "No prior retreat experience is needed. Sessions are led personally by Pradeep Ramola, and are built for practitioners who came for a class and are ready for a practice — the physical work and the spiritual work taught as one thing, not two."
           }
         },
         {
