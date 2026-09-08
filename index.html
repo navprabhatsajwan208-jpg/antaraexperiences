@@ -693,6 +693,36 @@
     color:var(--ink-soft);
   }
 
+  /* ---------- MULYA (packages & pricing) ---------- */
+  .mulya{ padding:100px 0 108px; background:var(--paper-deep); }
+  .mulya-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:56px; }
+  .mulya-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
+  .mulya-head p{ font-size:16.5px; color:var(--ink-soft); max-width:54ch; line-height:1.7; align-self:end; }
+
+  .mulya-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(21,32,43,0.14); border:var(--edge); }
+  .mulya-card{ background:var(--paper-deep); padding:36px 30px; transition:background .25s ease; }
+  .mulya-card:hover{ background:var(--paper); }
+  .mulya-card .days{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
+  .mulya-card h3{ font-size:26px; font-weight:560; margin-top:10px; }
+  .mulya-card .price{ font-family:var(--font-mono); font-size:clamp(30px,4vw,40px); color:var(--brass-deep); margin-top:14px; }
+  .mulya-card .price span{ font-size:14px; color:var(--ink-soft); font-weight:400; margin-left:4px; }
+  .mulya-card ul{ margin-top:22px; display:flex; flex-direction:column; gap:11px; }
+  .mulya-card li{ font-size:14.5px; color:var(--ink-soft); line-height:1.5; padding-left:20px; position:relative; }
+  .mulya-card li::before{ content:''; position:absolute; left:0; top:7px; width:10px; height:1px; background:var(--brass-deep); }
+  .mulya-cta{
+    display:inline-flex; align-items:center; gap:8px; margin-top:26px;
+    font-family:var(--font-body); font-size:12.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase;
+    color:var(--brass-deep); border-bottom:1px solid var(--brass-deep); padding-bottom:3px;
+    transition:opacity .2s ease, gap .2s ease;
+  }
+  .mulya-cta:hover{ opacity:0.7; gap:12px; }
+  .mulya-foot{ margin-top:28px; font-size:13px; color:var(--ink-soft); text-align:center; }
+
+  @media (max-width:760px){
+    .mulya-head{ grid-template-columns:1fr; gap:20px; }
+    .mulya-grid{ grid-template-columns:1fr; }
+  }
+
   /* ---------- PRASHNA (FAQ) ---------- */
   .prashna{ padding:96px 0 104px; background:var(--paper-deep); }
   .prashna-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:48px; }
@@ -902,6 +932,7 @@
       <a href="#details">Experiences</a>
       <a href="#journey">Retreats</a>
       <a href="#treks">Treks</a>
+      <a href="#pricing">Pricing</a>
     </div>
     <a href="#top" class="nav-logo" aria-label="Antara Experiences — home">
       <img src="assets/logo-mark.png" width="600" height="600" alt="Antara Experiences emblem — a meditating figure within a circular brushstroke, before the Himalayan foothills">
@@ -1385,6 +1416,60 @@
     </div>
   </section>
 
+  <!-- ===== MULYA :: packages & pricing ===== -->
+  <section class="mulya" id="pricing">
+    <div class="wrap">
+      <div class="mulya-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Mulya</span><span class="gloss">— what it costs to stay</span></p>
+          <h2>Choose your length of stay</h2>
+        </div>
+        <p>Three lengths, same immersion — daily practice, ceremony, and sattvic meals throughout. Longer stays go deeper into the outings and the stillness between sessions.</p>
+      </div>
+
+      <div class="mulya-grid">
+        <article class="mulya-card reveal" style="--d:0ms">
+          <p class="days">3 Days</p>
+          <h3>The Introduction</h3>
+          <p class="price">$280<span>/ person</span></p>
+          <ul>
+            <li>Private accommodation</li>
+            <li>Daily yoga &amp; pranayama classes</li>
+            <li>Rishikesh excursions</li>
+            <li>Sattvic Indian meals</li>
+          </ul>
+          <a href="#join" class="mulya-cta" data-prefill="The 3-day package">Join the waitlist →</a>
+        </article>
+        <article class="mulya-card reveal" style="--d:60ms">
+          <p class="days">5 Days</p>
+          <h3>The Immersion</h3>
+          <p class="price">$470<span>/ person</span></p>
+          <ul>
+            <li>Private accommodation</li>
+            <li>Daily yoga &amp; pranayama classes</li>
+            <li>Rishikesh excursions</li>
+            <li>Sattvic Indian meals</li>
+          </ul>
+          <a href="#join" class="mulya-cta" data-prefill="The 5-day package">Join the waitlist →</a>
+        </article>
+        <article class="mulya-card reveal" style="--d:120ms">
+          <p class="days">7 Days</p>
+          <h3>The Full Week</h3>
+          <p class="price">$690<span>/ person</span></p>
+          <ul>
+            <li>Private accommodation</li>
+            <li>Daily yoga &amp; pranayama classes</li>
+            <li>Rishikesh excursions</li>
+            <li>Sattvic Indian meals</li>
+          </ul>
+          <a href="#join" class="mulya-cta" data-prefill="The 7-day package">Join the waitlist →</a>
+        </article>
+      </div>
+
+      <p class="mulya-foot">Prices are per person, in USD. Exact dates are shared once your spot on a batch is confirmed.</p>
+    </div>
+  </section>
+
   <!-- ===== PRASHNA :: FAQ ===== -->
   <section class="prashna" id="faq">
     <div class="wrap">
@@ -1427,7 +1512,7 @@
         </details>
         <details class="faq-item">
           <summary>When are the dates, and what does it cost?<span class="sign" aria-hidden="true"></span></summary>
-          <p class="answer">Dates and pricing aren't published yet — we're confirming interest before locking a calendar. Join the waitlist and you'll hear first when a batch is confirmed. No payment, no commitment.</p>
+          <p class="answer">$280 for 3 days, $470 for 5 days, or $690 for 7 days — each including private accommodation, daily yoga and pranayama classes, Rishikesh excursions, and sattvic Indian meals. Exact dates aren't fixed yet; join the waitlist and you'll hear first when a batch is confirmed. No payment, no commitment.</p>
         </details>
         <details class="faq-item">
           <summary>How do I get to Rishikesh?<span class="sign" aria-hidden="true"></span></summary>
@@ -1452,7 +1537,7 @@
         <div class="reveal">
           <p class="eyebrow on-dark"><span class="term">Tihai</span><span class="gloss">— the phrase, said three times, that lands</span></p>
           <h2>Be first to know when the dates open</h2>
-          <p class="tihai-copy">We're testing interest before locking a calendar or a price. Leave your details and you'll hear first when a batch is confirmed — no payment, no commitment, just first word.</p>
+          <p class="tihai-copy">Packages start at $280. We're confirming interest before locking a calendar. Leave your details and you'll hear first when a batch is confirmed — no payment, no commitment, just first word.</p>
         </div>
 
         <div class="reveal" style="--d:100ms">
@@ -1899,7 +1984,7 @@
           "name": "When are the dates and what does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Dates and pricing are not yet published. We are confirming interest before locking a calendar. Join the waitlist and you will hear first when a batch is confirmed — no payment and no commitment required."
+            "text": "$280 for 3 days, $470 for 5 days, or $690 for 7 days, each including private accommodation, daily yoga and pranayama classes, Rishikesh excursions, and sattvic Indian meals. Exact dates are not fixed yet; join the waitlist and you will hear first when a batch is confirmed — no payment and no commitment required."
           }
         },
         {
