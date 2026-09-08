@@ -716,29 +716,6 @@
   .mulya-card:hover{ transform:translateY(-6px) !important; box-shadow:0 30px 60px -28px rgba(21,32,43,0.45); }
   .mulya-card:hover::before{ opacity:1; }
 
-  .mulya-card.featured{
-    background:var(--night-deep); color:var(--mist);
-    border-color:var(--brass); box-shadow:0 26px 54px -26px rgba(21,32,43,0.5);
-    margin-top:-14px;
-  }
-  .mulya-card.featured::before{ opacity:1; background:var(--brass-bright); }
-  .mulya-card.featured:hover{ transform:translateY(-6px) !important; }
-  .mulya-card.featured .days{ color:var(--brass-bright); }
-  .mulya-card.featured h3{ color:#F3EFE4; }
-  .mulya-card.featured .price{ color:var(--brass-bright); }
-  .mulya-card.featured .price span{ color:var(--mist-dim); }
-  .mulya-card.featured li{ color:var(--mist); }
-  .mulya-card.featured li svg{ color:var(--brass-bright); }
-  .mulya-card.featured .mulya-cta{ color:var(--brass-bright); border-color:var(--brass-bright); }
-
-  .mulya-badge{
-    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--night-deep); background:var(--brass-bright);
-    padding:5px 14px; border-radius:999px; white-space:nowrap;
-    box-shadow:0 8px 16px -6px rgba(0,0,0,0.35);
-  }
-
   .mulya-card .days{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
   .mulya-card h3{ font-size:24px; font-weight:560; margin-top:8px; }
   .mulya-card .price{ font-family:var(--font-mono); font-size:clamp(32px,4vw,42px); color:var(--brass-deep); margin-top:18px; line-height:1; }
@@ -759,7 +736,6 @@
   @media (max-width:760px){
     .mulya-head{ grid-template-columns:1fr; gap:20px; }
     .mulya-grid{ grid-template-columns:1fr; gap:44px; }
-    .mulya-card.featured{ margin-top:0; }
   }
 
   /* ---------- PRASHNA (FAQ) ---------- */
@@ -1480,8 +1456,7 @@
           </ul>
           <a href="#join" class="mulya-cta" data-prefill="The 3-day package">Join the waitlist →</a>
         </article>
-        <article class="mulya-card featured reveal" style="--d:60ms">
-          <span class="mulya-badge">Recommended</span>
+        <article class="mulya-card reveal" style="--d:60ms">
           <p class="days">5 Days</p>
           <h3>The Immersion</h3>
           <p class="price">$470<span>/ person</span></p>
