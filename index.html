@@ -1669,11 +1669,17 @@
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // CTAs with data-prefill drop their text into "What pulled you here?" before jumping to the form
+  // CTAs with data-prefill drop their text into "What pulled you here?" before jumping to the form.
+  // Only overwrites if the field is empty or still holds a previous auto-fill, so clicking between
+  // package buttons keeps updating the field, but real manually-typed text is never clobbered.
+  let lastAutoFill = '';
   document.querySelectorAll('[data-prefill]').forEach(cta => {
     cta.addEventListener('click', () => {
       const pullField = document.getElementById('wl-pull');
-      if (pullField && !pullField.value) pullField.value = cta.dataset.prefill;
+      if (pullField && (!pullField.value || pullField.value === lastAutoFill)) {
+        pullField.value = cta.dataset.prefill;
+        lastAutoFill = cta.dataset.prefill;
+      }
     });
   });
 
