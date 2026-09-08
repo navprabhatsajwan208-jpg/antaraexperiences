@@ -699,28 +699,67 @@
   .mulya-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:13ch; }
   .mulya-head p{ font-size:16.5px; color:var(--ink-soft); max-width:54ch; line-height:1.7; align-self:end; }
 
-  .mulya-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(21,32,43,0.14); border:var(--edge); }
-  .mulya-card{ background:var(--paper-deep); padding:36px 30px; transition:background .25s ease; }
-  .mulya-card:hover{ background:var(--paper); }
+  .mulya-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; align-items:start; }
+  .mulya-card{
+    position:relative; background:var(--paper); border-radius:8px; padding:40px 32px 36px;
+    box-shadow:0 20px 44px -30px rgba(21,32,43,0.35);
+    border:1px solid rgba(21,32,43,0.08);
+    transition:transform .3s cubic-bezier(.2,.6,.2,1), box-shadow .3s ease, border-color .3s ease;
+  }
+  .mulya-card::before{
+    content:''; position:absolute; top:0; left:32px; right:32px; height:3px;
+    background:var(--brass); border-radius:0 0 3px 3px; opacity:0.55; transition:opacity .3s ease;
+  }
+  /* transform !important below: the .reveal.in scroll-animation utility (defined later in
+     this stylesheet) sets the same transform property at equal specificity and would
+     otherwise silently win the cascade tie and flatten these cards back to translateY(0). */
+  .mulya-card:hover{ transform:translateY(-6px) !important; box-shadow:0 30px 60px -28px rgba(21,32,43,0.45); }
+  .mulya-card:hover::before{ opacity:1; }
+
+  .mulya-card.featured{
+    background:var(--night-deep); color:var(--mist);
+    border-color:var(--brass); box-shadow:0 26px 54px -26px rgba(21,32,43,0.5);
+    margin-top:-14px;
+  }
+  .mulya-card.featured::before{ opacity:1; background:var(--brass-bright); }
+  .mulya-card.featured:hover{ transform:translateY(-6px) !important; }
+  .mulya-card.featured .days{ color:var(--brass-bright); }
+  .mulya-card.featured h3{ color:#F3EFE4; }
+  .mulya-card.featured .price{ color:var(--brass-bright); }
+  .mulya-card.featured .price span{ color:var(--mist-dim); }
+  .mulya-card.featured li{ color:var(--mist); }
+  .mulya-card.featured li svg{ color:var(--brass-bright); }
+  .mulya-card.featured .mulya-cta{ color:var(--brass-bright); border-color:var(--brass-bright); }
+
+  .mulya-badge{
+    position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--night-deep); background:var(--brass-bright);
+    padding:5px 14px; border-radius:999px; white-space:nowrap;
+    box-shadow:0 8px 16px -6px rgba(0,0,0,0.35);
+  }
+
   .mulya-card .days{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); }
-  .mulya-card h3{ font-size:26px; font-weight:560; margin-top:10px; }
-  .mulya-card .price{ font-family:var(--font-mono); font-size:clamp(30px,4vw,40px); color:var(--brass-deep); margin-top:14px; }
-  .mulya-card .price span{ font-size:14px; color:var(--ink-soft); font-weight:400; margin-left:4px; }
-  .mulya-card ul{ margin-top:22px; display:flex; flex-direction:column; gap:11px; }
-  .mulya-card li{ font-size:14.5px; color:var(--ink-soft); line-height:1.5; padding-left:20px; position:relative; }
-  .mulya-card li::before{ content:''; position:absolute; left:0; top:7px; width:10px; height:1px; background:var(--brass-deep); }
+  .mulya-card h3{ font-size:24px; font-weight:560; margin-top:8px; }
+  .mulya-card .price{ font-family:var(--font-mono); font-size:clamp(32px,4vw,42px); color:var(--brass-deep); margin-top:18px; line-height:1; }
+  .mulya-card .price span{ font-size:13.5px; color:var(--ink-soft); font-weight:400; margin-left:5px; }
+  .mulya-card hr{ border:none; height:1px; background:currentColor; opacity:0.12; margin:24px 0; }
+  .mulya-card ul{ display:flex; flex-direction:column; gap:13px; }
+  .mulya-card li{ font-size:14.5px; color:var(--ink-soft); line-height:1.4; display:flex; align-items:flex-start; gap:10px; }
+  .mulya-card li svg{ width:15px; height:15px; flex-shrink:0; margin-top:2px; color:var(--brass-deep); }
   .mulya-cta{
-    display:inline-flex; align-items:center; gap:8px; margin-top:26px;
+    display:inline-flex; align-items:center; gap:8px; margin-top:28px;
     font-family:var(--font-body); font-size:12.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase;
     color:var(--brass-deep); border-bottom:1px solid var(--brass-deep); padding-bottom:3px;
     transition:opacity .2s ease, gap .2s ease;
   }
   .mulya-cta:hover{ opacity:0.7; gap:12px; }
-  .mulya-foot{ margin-top:28px; font-size:13px; color:var(--ink-soft); text-align:center; }
+  .mulya-foot{ margin-top:44px; font-size:13px; color:var(--ink-soft); text-align:center; }
 
   @media (max-width:760px){
     .mulya-head{ grid-template-columns:1fr; gap:20px; }
-    .mulya-grid{ grid-template-columns:1fr; }
+    .mulya-grid{ grid-template-columns:1fr; gap:44px; }
+    .mulya-card.featured{ margin-top:0; }
   }
 
   /* ---------- PRASHNA (FAQ) ---------- */
@@ -1432,23 +1471,26 @@
           <p class="days">3 Days</p>
           <h3>The Introduction</h3>
           <p class="price">$280<span>/ person</span></p>
+          <hr>
           <ul>
-            <li>Private accommodation</li>
-            <li>Daily yoga &amp; pranayama classes</li>
-            <li>Rishikesh excursions</li>
-            <li>Sattvic Indian meals</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Private accommodation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily yoga &amp; pranayama classes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rishikesh excursions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sattvic Indian meals</li>
           </ul>
           <a href="#join" class="mulya-cta" data-prefill="The 3-day package">Join the waitlist →</a>
         </article>
-        <article class="mulya-card reveal" style="--d:60ms">
+        <article class="mulya-card featured reveal" style="--d:60ms">
+          <span class="mulya-badge">Recommended</span>
           <p class="days">5 Days</p>
           <h3>The Immersion</h3>
           <p class="price">$470<span>/ person</span></p>
+          <hr>
           <ul>
-            <li>Private accommodation</li>
-            <li>Daily yoga &amp; pranayama classes</li>
-            <li>Rishikesh excursions</li>
-            <li>Sattvic Indian meals</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Private accommodation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily yoga &amp; pranayama classes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rishikesh excursions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sattvic Indian meals</li>
           </ul>
           <a href="#join" class="mulya-cta" data-prefill="The 5-day package">Join the waitlist →</a>
         </article>
@@ -1456,11 +1498,12 @@
           <p class="days">7 Days</p>
           <h3>The Full Week</h3>
           <p class="price">$690<span>/ person</span></p>
+          <hr>
           <ul>
-            <li>Private accommodation</li>
-            <li>Daily yoga &amp; pranayama classes</li>
-            <li>Rishikesh excursions</li>
-            <li>Sattvic Indian meals</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Private accommodation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Daily yoga &amp; pranayama classes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Rishikesh excursions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Sattvic Indian meals</li>
           </ul>
           <a href="#join" class="mulya-cta" data-prefill="The 7-day package">Join the waitlist →</a>
         </article>
