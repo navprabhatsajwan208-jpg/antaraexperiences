@@ -323,7 +323,7 @@
   }
   .hero-v2-corner.left .rule{ width:34px; height:1px; background:rgba(243,239,228,0.6); margin-top:8px; }
   .hero-v2-corner.right{
-    right:clamp(20px,5vw,56px); bottom:32px; color:#F3EFE4; text-align:right;
+    right:clamp(20px,5vw,56px); bottom:112px; color:#F3EFE4; text-align:right;
     display:flex; flex-direction:column; align-items:flex-end; gap:8px;
   }
   .hero-v2-corner.right .script{
@@ -347,7 +347,6 @@
 
   @media (max-width:640px){
     .hero-v2-corner.left{ bottom:auto; top:120px; }
-    .hero-v2-corner.right{ bottom:20px; }
     .hero-v2-scrollcue{ display:none; }
   }
 
@@ -608,6 +607,33 @@
   @media (max-width:760px){
     .acharya-grid{ grid-template-columns:1fr; gap:32px; }
     .acharya-photo{ aspect-ratio:4/3; max-width:420px; }
+  }
+
+  /* ---------- VISHWAS (interim trust builder) ---------- */
+  .vishwas{ padding:96px 0 104px; background:var(--paper); }
+  .vishwas-head{ display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; margin-bottom:48px; }
+  .vishwas-head h2{ font-size:clamp(26px,3.4vw,38px); margin-top:16px; max-width:14ch; }
+  .vishwas-head p{ font-size:16.5px; color:var(--ink-soft); max-width:52ch; line-height:1.7; align-self:end; }
+
+  .vishwas-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(21,32,43,0.14); border:var(--edge); }
+  .vishwas-card{ background:var(--paper); padding:30px 30px 32px; }
+  .vishwas-card .mark{
+    font-family:var(--font-mono); font-size:12px; color:var(--brass-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .vishwas-card .mark::before{ content:''; width:16px; height:1px; background:var(--brass-deep); opacity:0.6; }
+  .vishwas-card h3{ font-size:18px; font-weight:560; margin-top:14px; }
+  .vishwas-card p{ font-size:14.5px; color:var(--ink-soft); margin-top:10px; line-height:1.6; }
+
+  .vishwas-note{
+    margin-top:36px; font-family:var(--font-display); font-style:italic; font-weight:500;
+    font-size:17px; color:var(--ink-soft); max-width:60ch; line-height:1.6;
+    border-left:2px solid var(--brass-deep); padding-left:20px;
+  }
+
+  @media (max-width:760px){
+    .vishwas-head{ grid-template-columns:1fr; gap:20px; }
+    .vishwas-grid{ grid-template-columns:1fr; }
   }
 
   /* ---------- KATHA (outing stories) ---------- */
@@ -1013,7 +1039,7 @@
         </svg>
         <span class="ln"></span>
       </div>
-      <p class="hero-v2-keywords">YOGA<span class="sep">•</span>WELLNESS<span class="sep">•</span>CULTURE<span class="sep">•</span>NATURE<span class="sep">•</span>SPIRITUALITY</p>
+      <p class="hero-v2-keywords">YOGA <span class="sep">•</span> WELLNESS <span class="sep">•</span> CULTURE <span class="sep">•</span> NATURE <span class="sep">•</span> SPIRITUALITY</p>
     </div>
 
     <div class="hero-v2-corner left reveal in" style="--d:120ms">
@@ -1169,6 +1195,44 @@
         </div>
         <p>Pradeep holds a BSc in Yogic Sciences and has spent the past ten years teaching — not only guiding practitioners, but training the teachers who go on to lead their own. Long before Antara, he was already working in wellness and tourism, guiding groups through Rishikesh into what he calls its magical, spiritual side. The sessions here are led by him, in person.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== VISHWAS :: interim trust builder (no testimonials yet) ===== -->
+  <section class="vishwas" id="trust">
+    <div class="wrap">
+      <div class="vishwas-head reveal">
+        <div>
+          <p class="eyebrow on-light"><span class="term">Vishwas</span><span class="gloss">— trust, before the reviews catch up</span></p>
+          <h2>Why people hand us their week</h2>
+        </div>
+        <p>We're early — the reviews are still being written. Here's what you're actually trusting when you book.</p>
+      </div>
+
+      <div class="vishwas-grid">
+        <div class="vishwas-card reveal" style="--d:0ms">
+          <p class="mark">01</p>
+          <h3>Led in person, every batch</h3>
+          <p>Pradeep — ten years teaching, BSc in Yogic Sciences — is on the mat with you. Not a rotating roster of trainers.</p>
+        </div>
+        <div class="vishwas-card reveal" style="--d:60ms">
+          <p class="mark">02</p>
+          <h3>Small circles by design</h3>
+          <p>We keep batches small enough that the practice stays personal, not performative.</p>
+        </div>
+        <div class="vishwas-card reveal" style="--d:0ms">
+          <p class="mark">03</p>
+          <h3>Nothing hidden before you pay</h3>
+          <p>Full itinerary, stay details, and pricing are on this page — no "details on arrival."</p>
+        </div>
+        <div class="vishwas-card reveal" style="--d:60ms">
+          <p class="mark">04</p>
+          <h3>Rooted in Rishikesh, not visiting it</h3>
+          <p>Pradeep's been guiding groups through this town's spiritual side long before Antara existed.</p>
+        </div>
+      </div>
+
+      <p class="vishwas-note reveal">Our first circles are just getting back home — their stories will be here soon. For now, come see for yourself what they're coming back with.</p>
     </div>
   </section>
 
