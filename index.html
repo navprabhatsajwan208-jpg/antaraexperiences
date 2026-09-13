@@ -851,10 +851,14 @@
   .foot-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .foot-row .brand-mark{ color:var(--mist); font-size:16px; }
   .foot-row .brand-mark .glyph{ color:var(--brass-bright); }
-  .foot-links{ display:flex; gap:22px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; }
+  .foot-links{ display:flex; flex-wrap:wrap; gap:12px 22px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; }
   .foot-links a{ opacity:0.8; transition:opacity .2s ease; }
   .foot-links a:hover{ opacity:1; }
   .foot-fine{ font-family:var(--font-mono); font-size:11px; margin-top:22px; opacity:0.6; }
+
+  @media (max-width:560px){
+    footer{ padding-bottom:100px; }
+  }
 
   /* reveal-on-scroll */
   .reveal{ opacity:0; transform:translateY(22px) scale(0.98); transition:opacity .8s cubic-bezier(.2,.6,.2,1), transform .8s cubic-bezier(.2,.6,.2,1); transition-delay:var(--d, 0ms); }
