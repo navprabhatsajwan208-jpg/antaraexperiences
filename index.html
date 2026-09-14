@@ -245,9 +245,16 @@
     background:var(--paper);
   }
   .hero-v2-photo{ position:absolute; inset:0; z-index:0; }
+  /* Hero depth layers. Scroll (--par-sy) and pointer (--par-x/--par-y) parallax are
+     composed here in CSS rather than written as one inline transform, so the two
+     inputs can be updated independently without either clobbering the other.
+     The --par- prefix is load-bearing: :root already defines --mx/--my as the
+     percentage spotlight coords, and those inherit into every element here, so a
+     bare var(--mx,0px) would silently resolve to 50% instead of the fallback. */
   .hero-v2-photo img{
     width:100%; height:100%; object-fit:cover; object-position:center 42%;
-    display:block; will-change:transform; transform:scale(1.05); opacity:0.7;
+    display:block; will-change:transform; opacity:0.7;
+    transform:translate3d(var(--par-x,0px), calc(var(--par-sy,0px) + var(--par-y,0px)), 0) scale(1.05);
   }
   .hero-v2-scrim{
     position:absolute; inset:0; z-index:1; pointer-events:none;
@@ -266,6 +273,8 @@
   .hero-v2-mandala{
     position:absolute; top:-8%; right:-10%; width:min(640px,60vw); height:min(640px,60vw);
     z-index:1; opacity:0.28; color:#FBF6E9; pointer-events:none;
+    transform:translate3d(var(--par-x,0px), var(--par-y,0px), 0) rotate(var(--par-spin,0deg));
+    transition:transform .6s cubic-bezier(.2,.6,.2,1);
   }
 
   .site-nav-spacer{ height:96px; flex-shrink:0; position:relative; z-index:3; }
@@ -274,6 +283,7 @@
     position:relative; z-index:3; flex:1;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; padding:20px 24px 90px; will-change:transform;
+    transform:translate3d(var(--par-x,0px), calc(var(--par-sy,0px) + var(--par-y,0px)), 0);
   }
   .hero-v2-center > *{ max-width:100%; }
   .hero-v2-sub{ flex-wrap:wrap; row-gap:10px; }
@@ -865,6 +875,65 @@
   .reveal.in{ opacity:1; transform:translateY(0) scale(1); }
   @media (prefers-reduced-motion: reduce){
     .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- 3D DEPTH ----------
+     Cards tilt toward the cursor and lift their inner layers on the Z axis, so the
+     motion reads as real depth rather than a flat plane rotating. Declared after
+     .reveal deliberately: .reveal.in sets transform at equal specificity, and the
+     later rule wins the tie — same reason the .mulya-card:hover rule above needs
+     its !important. Z offsets stay small (max 22px at ~900px perspective ≈ 2.5%
+     scale) so lifted layers grow into each card's padding instead of over its edge.
+     JS only ever adds .tilting; every value below lives here in CSS. */
+  .held-card, .vishwas-card, .katha-card, .mulya-card,
+  .shikhar-card, .jhalak-item{ transform-style:preserve-3d; }
+
+  .tilting{ will-change:transform; transition:none !important; }
+
+  /* Inner layers: label → headline → body, each a little further forward. */
+  .held-card .body, .katha-card .body,
+  .vishwas-card .mark, .vishwas-card h3, .vishwas-card p,
+  .mulya-card .days, .mulya-card h3, .mulya-card .price, .mulya-card ul,
+  .shikhar-card .cat, .shikhar-card .desc,
+  .jhalak-item .cat, .jhalak-item .desc{
+    transition:transform .5s cubic-bezier(.2,.6,.2,1);
+  }
+  .mulya-card.tilting .price{ transform:translateZ(22px); }
+  .mulya-card.tilting h3, .vishwas-card.tilting h3{ transform:translateZ(16px); }
+  .mulya-card.tilting .days, .vishwas-card.tilting .mark,
+  .shikhar-card.tilting .cat, .jhalak-item.tilting .cat{ transform:translateZ(12px); }
+  .mulya-card.tilting ul, .vishwas-card.tilting p,
+  .shikhar-card.tilting .desc, .jhalak-item.tilting .desc{ transform:translateZ(6px); }
+  .held-card.tilting .body, .katha-card.tilting .body{ transform:translateZ(14px); }
+
+  /* Cursor-following sheen. .held-card already has its own; this extends the same
+     idea to the other card families so the whole page shares one hover vocabulary. */
+  .vishwas-card, .katha-card, .mulya-card{ position:relative; }
+  .vishwas-card::after, .katha-card::after, .mulya-card::after{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    border-radius:inherit;
+    background:radial-gradient(260px 220px at var(--hx,50%) var(--hy,50%), rgba(189,138,59,0.14), transparent 70%);
+    opacity:0; transition:opacity .4s ease;
+  }
+  .vishwas-card.tilting::after, .katha-card.tilting::after, .mulya-card.tilting::after{ opacity:1; }
+  .vishwas-card > *, .katha-card > *, .mulya-card > *{ position:relative; z-index:1; }
+
+  /* Image cards get a soft cast shadow while tilted, which sells the lift. */
+  .shikhar-card .frame, .jhalak-item .frame{
+    transition:box-shadow .45s ease, transform .45s cubic-bezier(.2,.6,.2,1);
+  }
+  .shikhar-card.tilting .frame, .jhalak-item.tilting .frame{
+    box-shadow:0 34px 60px -28px rgba(21,32,43,0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tilting{ transform:none !important; }
+    .held-card .body, .katha-card .body,
+    .vishwas-card .mark, .vishwas-card h3, .vishwas-card p,
+    .mulya-card .days, .mulya-card h3, .mulya-card .price, .mulya-card ul,
+    .shikhar-card .cat, .shikhar-card .desc,
+    .jhalak-item .cat, .jhalak-item .desc{ transform:none !important; transition:none; }
+    .hero-v2-mandala{ transition:none; }
   }
 
   /* ---------- LIGHTBOX ---------- */
@@ -1750,8 +1819,10 @@
     ticking = true;
     requestAnimationFrame(() => {
       const y = window.scrollY;
-      if (heroPhoto) heroPhoto.style.transform = `scale(1.05) translateY(${Math.min(y * 0.12, 90)}px)`;
-      if (heroCenter) heroCenter.style.transform = `translateY(${Math.min(y * 0.1, 50)}px)`;
+      // --par-sy only; the pointer-parallax handler owns --par-x/--par-y on the same
+      // elements and CSS adds the two together, so neither input overwrites the other.
+      if (heroPhoto) heroPhoto.style.setProperty('--par-sy', Math.min(y * 0.12, 90) + 'px');
+      if (heroCenter) heroCenter.style.setProperty('--par-sy', Math.min(y * 0.1, 50) + 'px');
       if (classicHeroPhoto && classicHeroSection) {
         const localY = -classicHeroSection.getBoundingClientRect().top;
         const clamped = Math.max(0, Math.min(localY, 700));
@@ -1771,18 +1842,110 @@
       });
     });
 
-    // Tilt + cursor-glow on held-cards
-    document.querySelectorAll('.held-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${py * -5}deg) rotateY(${px * 5}deg) translateY(-4px) scale(1.015)`;
-        card.style.setProperty('--hx', ((e.clientX - r.left) / r.width * 100) + '%');
-        card.style.setProperty('--hy', ((e.clientY - r.top) / r.height * 100) + '%');
+    // 3D tilt + cursor-glow, shared by every card family.
+    //
+    // Only runs for a fine pointer: on touch, pointermove fires as a tap-drag and
+    // would leave cards stuck mid-tilt with no pointerleave to reset them.
+    //
+    // The rect is read inside the rAF rather than per event. getBoundingClientRect
+    // forces a synchronous layout, and the raw pointermove stream can outpace the
+    // frame rate, so reading it per event thrashes layout on a page this long;
+    // reading once per painted frame is both cheaper and never stale after a scroll.
+    //
+    // The transform is written with 'important' so it beats the stylesheet's
+    // .mulya-card:hover{transform:...!important}; the class carries no transform of
+    // its own, so removing this inline value hands control cleanly back to CSS.
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    // Live query, not the load-time reduceMotion snapshot: because the transform is
+    // written inline with 'important' it outranks any stylesheet rule, so the
+    // reduced-motion block in the CSS cannot claw it back. Honour the setting here
+    // instead, and the guard holds even if it is switched on after load.
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const enableTilt = (selector, { max = 5, persp = 900, lift = -4, scale = 1.015 } = {}) => {
+      document.querySelectorAll(selector).forEach(card => {
+        let raf = 0, cx = 0, cy = 0;
+
+        const apply = () => {
+          raf = 0;
+          if (motionQuery.matches) { card.style.removeProperty('transform'); return; }
+          const r = card.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          const fx = (cx - r.left) / r.width;
+          const fy = (cy - r.top) / r.height;
+          card.style.setProperty('transform',
+            `perspective(${persp}px) rotateX(${((fy - 0.5) * -max).toFixed(2)}deg) ` +
+            `rotateY(${((fx - 0.5) * max).toFixed(2)}deg) translateY(${lift}px) scale(${scale})`,
+            'important');
+          card.style.setProperty('--hx', (fx * 100).toFixed(1) + '%');
+          card.style.setProperty('--hy', (fy * 100).toFixed(1) + '%');
+        };
+
+        card.addEventListener('pointerenter', () => card.classList.add('tilting'));
+        card.addEventListener('pointermove', (e) => {
+          cx = e.clientX; cy = e.clientY;
+          if (!raf) raf = requestAnimationFrame(apply);
+        });
+        card.addEventListener('pointerleave', () => {
+          if (raf) { cancelAnimationFrame(raf); raf = 0; }
+          // Drop .tilting first so the eased transition is live for the reset below.
+          card.classList.remove('tilting');
+          card.style.removeProperty('transform');
+        });
       });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-    });
+    };
+
+    if (finePointer) {
+      enableTilt('.held-card');
+      enableTilt('.vishwas-card', { max: 4 });
+      enableTilt('.katha-card', { max: 3.5, lift: -5 });
+      enableTilt('.mulya-card', { max: 4.5, persp: 1000, lift: -8, scale: 1.02 });
+      enableTilt('.shikhar-card', { max: 5, lift: -6 });
+      enableTilt('.jhalak-item', { max: 4, lift: -5, scale: 1.012 });
+
+      // Hero pointer-parallax: layers shift by depth, the mandala counter-moving
+      // against the photo so the two separate instead of sliding as one plane.
+      const heroV2 = document.querySelector('.hero-v2');
+      const heroMandala = document.querySelector('.hero-v2-mandala');
+      if (heroV2) {
+        let hraf = 0, hx = 0, hy = 0;
+        const applyHero = () => {
+          hraf = 0;
+          if (motionQuery.matches) return;
+          const r = heroV2.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          const dx = (hx - r.left) / r.width - 0.5;
+          const dy = (hy - r.top) / r.height - 0.5;
+          if (heroPhoto) {
+            heroPhoto.style.setProperty('--par-x', (dx * 10).toFixed(1) + 'px');
+            heroPhoto.style.setProperty('--par-y', (dy * 10).toFixed(1) + 'px');
+          }
+          if (heroMandala) {
+            heroMandala.style.setProperty('--par-x', (dx * -22).toFixed(1) + 'px');
+            heroMandala.style.setProperty('--par-y', (dy * -22).toFixed(1) + 'px');
+            heroMandala.style.setProperty('--par-spin', (dx * 4).toFixed(2) + 'deg');
+          }
+          if (heroCenter) {
+            heroCenter.style.setProperty('--par-x', (dx * 5).toFixed(1) + 'px');
+            heroCenter.style.setProperty('--par-y', (dy * 5).toFixed(1) + 'px');
+          }
+        };
+        heroV2.addEventListener('pointermove', (e) => {
+          hx = e.clientX; hy = e.clientY;
+          if (!hraf) hraf = requestAnimationFrame(applyHero);
+        });
+        heroV2.addEventListener('pointerleave', () => {
+          if (hraf) { cancelAnimationFrame(hraf); hraf = 0; }
+          [heroPhoto, heroMandala, heroCenter].forEach(el => {
+            if (!el) return;
+            el.style.setProperty('--par-x', '0px');
+            el.style.setProperty('--par-y', '0px');
+          });
+          if (heroMandala) heroMandala.style.setProperty('--par-spin', '0deg');
+        });
+      }
+    }
   }
 
   // Lightbox — open gallery photos at their natural shape
