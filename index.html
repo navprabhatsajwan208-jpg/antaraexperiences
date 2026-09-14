@@ -171,7 +171,12 @@
   .nav-toggle.open span:nth-child(2){ opacity:0; }
   .nav-toggle.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
 
-  .nav-links{ flex:1; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+  /* Content-sized columns + space-between so the leftover width is split evenly
+     into the two gaps flanking the mark. With 1fr side columns the groups hug the
+     outer edges instead, which only looks even when both groups happen to be the
+     same width — the CTA pill makes the right group wider, so the mark drifted
+     into a much larger gap on the left. */
+  .nav-links{ flex:1; display:grid; grid-template-columns:auto auto auto; justify-content:space-between; align-items:center; gap:20px; }
   .nl-group{ display:flex; align-items:center; gap:28px; }
   .nl-group.left{ justify-self:start; }
   .nl-group.right{ justify-self:end; }
@@ -1059,12 +1064,12 @@
       <a href="#album">Retreats</a>
       <a href="#treks">Treks</a>
       <a href="#pricing">Pricing</a>
+      <a href="#why">About Us</a>
     </div>
     <a href="#top" class="nav-logo" aria-label="Antara Experiences — home">
       <img src="assets/logo-mark.png" width="600" height="600" alt="Antara Experiences emblem — a meditating figure within a circular brushstroke, before the Himalayan foothills">
     </a>
     <div class="nl-group right">
-      <a href="#why">About Us</a>
       <a href="#teacher">Teacher</a>
       <a href="#journal">Journal</a>
       <a href="#join">Contact Us</a>
@@ -2039,15 +2044,7 @@
       return list;
     };
     wire('.jhalak-item .frame img');
-    const album = wire('.sanchari-item img');
-
-    // "Retreats" opens the full album as a slideshow instead of scrolling to it.
-    // The href stays #album so the link still lands somewhere sensible if this
-    // script fails to run.
-    const albumLink = document.querySelector('.nav-links a[href="#album"]');
-    if (albumLink && album.length) {
-      albumLink.addEventListener('click', (e) => { e.preventDefault(); openLightbox(album, 0); });
-    }
+    wire('.sanchari-item img');
 
     prevBtn.addEventListener('click', () => step(-1));
     nextBtn.addEventListener('click', () => step(1));
