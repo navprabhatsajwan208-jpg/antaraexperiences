@@ -162,8 +162,12 @@
   }
   .brand-mark .glyph{ width:18px; height:18px; color:var(--brass); flex-shrink:0; }
 
+  /* Hidden above the drawer breakpoint: every link is already on the bar there,
+     and the drawer styles this opens live inside the max-width:900px query, so on
+     desktop it was a dead control that also weighted the bar to the left with
+     nothing opposite it. Shown again with the drawer below. */
   .nav-toggle{
-    display:flex; flex-direction:column; gap:5px; width:22px; flex-shrink:0;
+    display:none; flex-direction:column; gap:5px; width:22px; flex-shrink:0;
     color:var(--evergreen-deep);
   }
   .nav-toggle span{ height:1.5px; width:100%; background:currentColor; transition:transform .3s ease, opacity .3s ease; }
@@ -171,15 +175,14 @@
   .nav-toggle.open span:nth-child(2){ opacity:0; }
   .nav-toggle.open span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
 
-  /* Content-sized columns + space-between so the leftover width is split evenly
-     into the two gaps flanking the mark. With 1fr side columns the groups hug the
-     outer edges instead, which only looks even when both groups happen to be the
-     same width — the CTA pill makes the right group wider, so the mark drifted
-     into a much larger gap on the left. */
-  .nav-links{ flex:1; display:grid; grid-template-columns:auto auto auto; justify-content:space-between; align-items:center; gap:20px; }
+  /* Equal side columns hold the mark dead centre. Centring each group inside its
+     own column then splits that column's spare width evenly, so the wider right
+     group (the CTA pill runs ~70px past the left group) skews the gaps flanking
+     the mark by only half as much as it would if the groups hugged the outer
+     edges — and it evens out the margins at the two ends of the bar as well. */
+  .nav-links{ flex:1; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
   .nl-group{ display:flex; align-items:center; gap:28px; }
-  .nl-group.left{ justify-self:start; }
-  .nl-group.right{ justify-self:end; }
+  .nl-group.left, .nl-group.right{ justify-self:center; }
   .nav-links a{
     font-family:var(--font-body);
     font-size:12.5px;
@@ -224,6 +227,7 @@
     .nav-links a{ font-size:11px; }
   }
   @media (max-width:900px){
+    .nav-toggle{ display:flex; }
     .nav-links{
       position:fixed; inset:0 0 0 auto; width:78%; max-width:320px;
       background:var(--evergreen-deep); color:var(--paper);
